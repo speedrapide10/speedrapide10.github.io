@@ -9,21 +9,21 @@
 
 <channel>
 	<title>Oussama KAREM</title>
-	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
-	<link>./../index.html</link>
+	<atom:link href="http://192.168.11.40/feed/?simply_static_page=2143" rel="self" type="application/rss+xml" />
+	<link>/</link>
 	<description></description>
-	<lastBuildDate>Tue, 25 Jul 2023 21:16:52 +0000</lastBuildDate>
+	<lastBuildDate>Sun, 24 Sep 2023 19:23:43 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.2.2</generator>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
 
 <image>
-	<url>./../wp-content/uploads/2023/07/cropped-ben-sweet-2LowviVHZ-E-unsplash-1-scaled-1-32x32.jpg</url>
+	<url>/wp-content/uploads/2023/07/cropped-ben-sweet-2LowviVHZ-E-unsplash-1-scaled-1-32x32.jpg</url>
 	<title>Oussama KAREM</title>
-	<link>./../index.html</link>
+	<link>/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
