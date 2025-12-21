@@ -1,13 +1,22 @@
 ---
+/** * IMPORTS: These are the "tools" we use to build the page.
+ * We are using "lucide-react" for high-quality icons and 
+ * components we built like Layout and Cursor.
+ */
 import Layout from '../layouts/Layout.astro';
 import Cursor from '../components/Cursor.astro';
-import { Terminal, Cpu, Cloud, Shield, Activity, Network, Github, Linkedin, ExternalLink } from 'lucide-react';
+import { 
+    Terminal, Cpu, Cloud, Shield, Activity, 
+    Network, Github, Linkedin, ExternalLink, 
+    Code2, RefreshCw, Lock 
+} from 'lucide-react';
 
 /* Oussama Karem | SysOps L2 Engineer
-  - Hero: Added immediate Social CTA buttons
-  - Skills: Restored Technical Arsenal with high-visibility cards
-  - Red Hat: Exact 640x640 path provided (#EE0000)
-  - English: B2 Upper Intermediate
+   -------------------------------------------------
+   TECHNICAL DATA PRESERVATION:
+   - Red Hat: Exact 640x640 path provided (#EE0000)
+   - English: B2 Upper Intermediate Level
+   - Projects: Added OPNSense & Ansible Security Patches
 */
 ---
 
@@ -21,6 +30,7 @@ import { Terminal, Cpu, Cloud, Shield, Activity, Network, Github, Linkedin, Exte
                 <p class="font-mono text-blue-600 dark:text-blue-400 text-base tracking-[0.5em] uppercase font-bold mb-6">
                     Ingénieur SysOps N2
                 </p>
+
                 <div class="relative">
                     <h1 class="text-8xl md:text-[13rem] font-black tracking-tighter leading-[0.75] uppercase select-none text-zinc-800 dark:text-zinc-300">
                         OUSSAMA
@@ -37,11 +47,11 @@ import { Terminal, Cpu, Cloud, Shield, Activity, Network, Github, Linkedin, Exte
                 </div>
 
                 <div class="mt-16 flex flex-wrap gap-6">
-                    <a href="https://linkedin.com/in/oussama-karem" target="_blank" class="flex items-center gap-3 px-8 py-4 bg-[#0077b5] text-white rounded-xl font-bold hover:scale-105 hover:shadow-[0_10px_20px_rgba(0,119,181,0.2)] transition-all">
-                        <Linkedin size={20} /> LinkedIn
+                    <a href="https://linkedin.com/in/oussama-karem" target="_blank" class="flex items-center gap-3 px-8 py-4 bg-[#0077b5] text-white rounded-xl font-bold hover:scale-105 transition-all">
+                        <Linkedin size={20} /> LinkedIn Profile
                     </a>
                     <a href="https://github.com/speedrapide10" target="_blank" class="flex items-center gap-3 px-8 py-4 bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 text-white rounded-xl font-bold hover:scale-105 transition-all">
-                        <Github size={20} /> GitHub
+                        <Github size={20} /> GitHub Repositories
                     </a>
                 </div>
             </div>
@@ -81,32 +91,32 @@ import { Terminal, Cpu, Cloud, Shield, Activity, Network, Github, Linkedin, Exte
                 
                 <div class="p-10 border-2 border-zinc-400/20 dark:border-white/10 bg-zinc-200/30 dark:bg-zinc-900/30 rounded-3xl space-y-6">
                     <div class="flex items-center gap-4 text-blue-500"><Cloud size={24} /> <h3 class="font-bold uppercase tracking-widest text-sm">Cloud & Virtualization</h3></div>
-                    <p class="text-sm visible-secondary leading-relaxed font-medium">VMware ESXi, Proxmox VE, oVirt, Docker, Podman, Cloudflare CDN/WAF.</p>
+                    <p class="text-sm visible-secondary leading-relaxed font-medium">VMware ESXi, Proxmox VE Cluster, oVirt Engine, Docker, Podman, Cloudflare Edge Network.</p>
                 </div>
 
                 <div class="p-10 border-2 border-zinc-400/20 dark:border-white/10 bg-zinc-200/30 dark:bg-zinc-900/30 rounded-3xl space-y-6">
                     <div class="flex items-center gap-4 text-orange-500"><Terminal size={24} /> <h3 class="font-bold uppercase tracking-widest text-sm">Automation & DevOps</h3></div>
-                    <p class="text-sm visible-secondary leading-relaxed font-medium">Ansible, GitLab CI/CD, Power Automate, Bash Scripting, Python, YAML.</p>
+                    <p class="text-sm visible-secondary leading-relaxed font-medium">Ansible Playbooks (Security Patching), Terraform IaC, GitLab CI/CD Pipelines, Power Automate, Python & Bash Scripting.</p>
                 </div>
 
                 <div class="p-10 border-2 border-zinc-400/20 dark:border-white/10 bg-zinc-200/30 dark:bg-zinc-900/30 rounded-3xl space-y-6">
                     <div class="flex items-center gap-4 text-green-500"><Activity size={24} /> <h3 class="font-bold uppercase tracking-widest text-sm">Observability</h3></div>
-                    <p class="text-sm visible-secondary leading-relaxed font-medium">Zabbix, Nagios, Prometheus, Grafana, ELK Stack (Elasticsearch, Logstash, Kibana).</p>
+                    <p class="text-sm visible-secondary leading-relaxed font-medium">Zabbix, Nagios Core, Prometheus, Grafana Dashboards, ELK Stack (Log Management).</p>
                 </div>
 
                 <div class="p-10 border-2 border-zinc-400/20 dark:border-white/10 bg-zinc-200/30 dark:bg-zinc-900/30 rounded-3xl space-y-6">
                     <div class="flex items-center gap-4 text-zinc-500 dark:text-zinc-400"><Cpu size={24} /> <h3 class="font-bold uppercase tracking-widest text-sm">Operating Systems</h3></div>
-                    <p class="text-sm visible-secondary leading-relaxed font-medium">RHEL (Red Hat Enterprise Linux), CentOS, Debian, Ubuntu Server, Windows Server.</p>
+                    <p class="text-sm visible-secondary leading-relaxed font-medium">RHEL (Red Hat Enterprise Linux), CentOS, Debian GNU/Linux, Ubuntu Server, Windows Server AD.</p>
                 </div>
 
                 <div class="p-10 border-2 border-zinc-400/20 dark:border-white/10 bg-zinc-200/30 dark:bg-zinc-900/30 rounded-3xl space-y-6">
                     <div class="flex items-center gap-4 text-purple-500"><Network size={24} /> <h3 class="font-bold uppercase tracking-widest text-sm">Networking</h3></div>
-                    <p class="text-sm visible-secondary leading-relaxed font-medium">Cisco IOS, MikroTik RouterOS, TCP/IP, VLANs, VPN (OpenVPN, WireGuard), Firewalling.</p>
+                    <p class="text-sm visible-secondary leading-relaxed font-medium">Cisco IOS, MikroTik RouterOS, OPNSense Firewall, TCP/IP, VLAN Segmentation, VPN (WireGuard/OpenVPN).</p>
                 </div>
 
                 <div class="p-10 border-2 border-zinc-400/20 dark:border-white/10 bg-zinc-200/30 dark:bg-zinc-900/30 rounded-3xl space-y-6">
-                    <div class="flex items-center gap-4 text-red-500"><Shield size={24} /> <h3 class="font-bold uppercase tracking-widest text-sm">Security</h3></div>
-                    <p class="text-sm visible-secondary leading-relaxed font-medium">Fortinet NSE standards, SSH Hardening, SSL/TLS Management, WAF Configuration.</p>
+                    <div class="flex items-center gap-4 text-red-500"><Shield size={24} /> <h3 class="font-bold uppercase tracking-widest text-sm">Cyber Security</h3></div>
+                    <p class="text-sm visible-secondary leading-relaxed font-medium">Fortinet NSE standards, OPNSense Protection, SSH Hardening, SSL/TLS Lifecycle, Cloudflare WAF.</p>
                 </div>
             </div>
         </section>
@@ -118,32 +128,58 @@ import { Terminal, Cpu, Cloud, Shield, Activity, Network, Github, Linkedin, Exte
                 <div class="group p-12 border-2 border-zinc-400/30 dark:border-white/10 bg-card-bg rounded-[3rem] hover:border-blue-500 transition-all flex flex-col justify-between">
                     <div>
                         <div class="flex justify-between items-start mb-10">
-                            <div class="p-5 bg-blue-500/10 rounded-2xl text-blue-500"><Terminal size={40} /></div>
+                            <div class="p-5 bg-blue-500/10 rounded-2xl text-blue-500"><Code2 size={40} /></div>
                             <ExternalLink size={24} class="opacity-20 group-hover:opacity-100 transition-opacity" />
                         </div>
-                        <h3 class="text-4xl font-bold uppercase tracking-tight mb-6 visible-primary">Ansible Infrastructure Automation</h3>
-                        <p class="text-xl visible-secondary leading-relaxed mb-10">Developed a collection of Ansible playbooks for automated server hardening, SSL lifecycle management, and application deployment across RHEL and Debian environments.</p>
+                        <h3 class="text-4xl font-bold uppercase tracking-tight mb-6 visible-primary">Ansible Fleet Security</h3>
+                        <p class="text-xl visible-secondary leading-relaxed mb-10">Automating the deployment of critical security patches and OS hardening policies across mixed RHEL and Debian environments using idempotent playbooks.</p>
                     </div>
                     <div class="flex gap-4 flex-wrap">
                         <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest">Ansible</span>
+                        <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest">Security Patches</span>
                         <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest">RHEL</span>
-                        <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest">Hardening</span>
                     </div>
                 </div>
 
                 <div class="group p-12 border-2 border-zinc-400/30 dark:border-white/10 bg-card-bg rounded-[3rem] hover:border-orange-500 transition-all flex flex-col justify-between">
                     <div>
                         <div class="flex justify-between items-start mb-10">
-                            <div class="p-5 bg-orange-500/10 rounded-2xl text-orange-500"><Cloud size={40} /></div>
+                            <div class="p-5 bg-orange-500/10 rounded-2xl text-orange-500"><Shield size={40} /></div>
                             <ExternalLink size={24} class="opacity-20 group-hover:opacity-100 transition-opacity" />
                         </div>
-                        <h3 class="text-4xl font-bold uppercase tracking-tight mb-6 visible-primary">Hybrid Cloud Observability</h3>
-                        <p class="text-xl visible-secondary leading-relaxed mb-10">Integrated Prometheus and Grafana with a multi-node Proxmox cluster to provide real-time hardware health and VM traffic analysis with custom alerting pipelines.</p>
+                        <h3 class="text-4xl font-bold uppercase tracking-tight mb-6 visible-primary">Cloudflare IaC Security</h3>
+                        <p class="text-xl visible-secondary leading-relaxed mb-10">Managing global edge security using Terraform to automate Cloudflare WAF rules, DNS zones, and Zero Trust access policies with version-controlled safety.</p>
                     </div>
                     <div class="flex gap-4 flex-wrap">
-                        <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest">Prometheus</span>
+                        <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest">Terraform</span>
+                        <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest">Cloudflare</span>
+                        <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest">IaC</span>
+                    </div>
+                </div>
+
+                <div class="group p-12 border-2 border-zinc-400/30 dark:border-white/10 bg-card-bg rounded-[3rem] hover:border-green-500 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-10">
+                            <div class="p-5 bg-green-500/10 rounded-2xl text-green-500"><Lock size={40} /></div>
+                            <ExternalLink size={24} class="opacity-20 group-hover:opacity-100 transition-opacity" />
+                        </div>
+                        <h3 class="text-4xl font-bold uppercase tracking-tight mb-6 visible-primary">OPNSense Virtual Security</h3>
+                        <p class="text-xl visible-secondary leading-relaxed mb-10">Deploying and orchestrating OPNSense firewalls within Proxmox clusters to secure internal VM traffic and automate site-to-site VPN tunnels.</p>
+                    </div>
+                    <div class="flex gap-4 flex-wrap">
+                        <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest">OPNSense</span>
                         <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest">Proxmox</span>
-                        <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest">Grafana</span>
+                        <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest">Firewall</span>
+                    </div>
+                </div>
+
+                <div class="group p-12 border-2 border-dashed border-zinc-400/30 dark:border-white/10 bg-zinc-100/50 dark:bg-zinc-900/50 rounded-[3rem] hover:border-blue-400 transition-all flex flex-col justify-center text-center">
+                    <div class="flex flex-col items-center">
+                        <RefreshCw size={48} class="text-zinc-400 mb-6 animate-spin-slow" />
+                        <h3 class="text-3xl font-bold uppercase tracking-tight mb-4 visible-primary">Learning New Tech</h3>
+                        <p class="text-lg visible-secondary italic leading-relaxed">
+                            "Currently exploring Kubernetes orchestration, Advanced CI/CD patterns, and Go-based system tools. Always evolving."
+                        </p>
                     </div>
                 </div>
 
@@ -152,7 +188,7 @@ import { Terminal, Cpu, Cloud, Shield, Activity, Network, Github, Linkedin, Exte
 
         <section id="connect" class="py-40 reveal-content">
             <div class="max-w-4xl mx-auto text-center space-y-12">
-                <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter visible-primary">Let's build reliable systems.</h2>
+                <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter visible-primary">Scale with confidence.</h2>
                 <p class="text-2xl visible-secondary leading-relaxed">
                     Explore my full professional experience and code contributions.
                 </p>
@@ -169,3 +205,28 @@ import { Terminal, Cpu, Cloud, Shield, Activity, Network, Github, Linkedin, Exte
 
     </main>
 </Layout>
+
+<script>
+    /** * GSAP ANIMATIONS:
+     * We use GSAP to animate the elements as they appear on the screen.
+     * This adds a professional, smooth feeling to the portfolio.
+     */
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Initial load animation for the Big Name
+    gsap.from(".reveal-hero h1", { 
+        y: 100, 
+        opacity: 0, 
+        duration: 1.2, 
+        stagger: 0.2, 
+        ease: "expo.out" 
+    });
+    
+    // Animation for sections as you scroll down
+    gsap.from(".reveal-content", {
+        scrollTrigger: { trigger: ".reveal-content", start: "top 95%" },
+        y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
+    });
+</script>
