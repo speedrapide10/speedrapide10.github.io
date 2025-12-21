@@ -1,14 +1,11 @@
 ---
-/** * IMPORTS: These are the "tools" we use to build the page.
- * We are using "lucide-react" for high-quality icons and 
- * components we built like Layout and Cursor.
- */
+/** * IMPORTS: Essential tools for icons and layout components. */
 import Layout from '../layouts/Layout.astro';
 import Cursor from '../components/Cursor.astro';
 import { 
     Terminal, Cpu, Cloud, Shield, Activity, 
     Network, Github, Linkedin, ExternalLink, 
-    Code2, RefreshCw, Lock 
+    Code2, RefreshCw, Lock, Heart 
 } from 'lucide-react';
 
 /* Oussama Karem | SysOps L2 Engineer
@@ -16,7 +13,7 @@ import {
    TECHNICAL DATA PRESERVATION:
    - Red Hat: Exact 640x640 path provided (#EE0000)
    - English: B2 Upper Intermediate Level
-   - Projects: Added OPNSense & Ansible Security Patches
+   - Projects: OPNSense & Ansible Security Patches included.
 */
 ---
 
@@ -53,6 +50,33 @@ import {
                     <a href="https://github.com/speedrapide10" target="_blank" class="flex items-center gap-3 px-8 py-4 bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 text-white rounded-xl font-bold hover:scale-105 transition-all">
                         <Github size={20} /> GitHub Repositories
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-32 reveal-content">
+            <div class="max-w-5xl">
+                <h2 class="text-sm font-bold tracking-[0.6em] uppercase opacity-60 mb-12 italic visible-primary">/ Core_Philosophy</h2>
+                
+                <div class="space-y-10">
+                    <p class="text-3xl md:text-5xl font-medium leading-tight visible-primary tracking-tight">
+                        Passionate SysOps Engineer with a deep affinity for the <span class="text-blue-500 font-bold">Linux ecosystem</span>. 
+                        To me, Linux isn't just an OS—it's the backbone of global innovation.
+                    </p>
+                    
+                    <p class="text-xl md:text-2xl visible-secondary leading-relaxed max-w-4xl font-medium">
+                        I specialize in orchestrating high-performance environments using 
+                        <span class="text-foreground font-bold border-b-2 border-orange-500/30">Proxmox</span> and 
+                        <span class="text-foreground font-bold border-b-2 border-blue-500/30">Docker</span>. 
+                        I thrive on transforming complex, fragmented infrastructure into streamlined, self-healing systems.
+                    </p>
+
+                    <div class="relative pl-10 border-l-4 border-blue-500 py-6 bg-zinc-500/5 dark:bg-white/5 rounded-r-3xl group transition-all hover:bg-blue-500/5">
+                        <Heart size={24} class="absolute -left-3.5 top-0 text-blue-500 bg-background rounded-full p-0.5" />
+                        <p class="text-2xl md:text-3xl italic visible-primary opacity-90 leading-relaxed">
+                            "I have a relentless drive for <span class="font-bold text-blue-500">Automation</span>. I believe that embracing new tech and building automated workflows isn't just about efficiency—it's about making life fundamentally <span class="underline decoration-blue-500/40">much more easier</span> for everyone."
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
