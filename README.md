@@ -1,17 +1,43 @@
-# speedrapide10.github.io
-Oussama Static website
-https://speedrapide10.github.io/
+# Astro Starter Kit: Minimal
 
+```sh
+npm create astro@latest -- --template minimal
+```
 
-To generate static website from current workdpress website:
-1. Deploy workdpress website on local machine
-2. Disable every plugin
-3. Install simply static plugin
-4. Activate the plugin
-5. Simply static ==> Settings ==> Replacing URLs ==> Choose offline usage ==> Save settings
-6. Simply static ==> Deployment method ==> Choose ZIP archive
-7. Now Generate static file
-8. Go to activity logs and wait until you get the message bellow ```[2023-09-24 19:26:08] ZIP archive created:  Click here to download```
-9. Click on download then you can copy the files into the concerned Github repo
-10. Fix the files Paths
-11. push the changes and enjoy 🥳
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
+
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
