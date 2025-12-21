@@ -1,14 +1,18 @@
 ---
 import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Cursor from '../components/Cursor.astro';
+import LoadingScreen from '../components/LoadingScreen.astro';
 
 interface Props {
 	title: string;
 }
+
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -16,7 +20,26 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 	</head>
-	<body class="antialiased selection:bg-blue-500/30 overflow-x-hidden">
-		<slot />
+	<body class="antialiased selection:bg-blue-500/30 overflow-x-hidden bg-background text-foreground transition-colors duration-300">
+		<LoadingScreen />
+		<Header />
+		<Cursor />
+
+		<div class="content-wrapper opacity-0">
+			<slot />
+		</div>
+
+		<script>
+			import gsap from 'gsap';
+			window.addEventListener('load', () => {
+				// Wait for loader duration before revealing content
+				gsap.to(".content-wrapper", { 
+					opacity: 1, 
+					duration: 1.2, 
+					delay: 2.5, 
+					ease: "power2.out" 
+				});
+			});
+		</script>
 	</body>
 </html>
