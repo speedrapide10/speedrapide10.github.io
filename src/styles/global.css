@@ -4,8 +4,8 @@
   :root {
     --background: #e4e4e7; 
     --foreground: #09090b;
-    --card-bg: rgba(212, 212, 216, 0.9);
-    --text-muted: #27272a;
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --text-muted: #18181b;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -22,16 +22,25 @@
     color: var(--foreground);
     transition: background-color 0.4s ease, color 0.4s ease;
     font-family: 'Inter', sans-serif;
-    font-size: 18px; 
-    line-height: 1.6;
+    font-size: 20px; /* Increased base readability */
   }
 
-  /* Cleaner Outline Effect */
+  /* Command-style Outline Name */
   .outline-name {
-    -webkit-text-stroke: 1px var(--foreground); /* Thinner for a cleaner look */
-    letter-spacing: -0.02em;
+    -webkit-text-stroke: 1.5px var(--foreground);
+    letter-spacing: -0.01em;
   }
 
-  .visible-primary { color: var(--foreground); font-weight: 500; }
-  .visible-secondary { color: var(--text-muted); font-weight: 400; }
+  /* High-Visibility Interactive Containers */
+  .interactive-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .interactive-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+  }
+
+  .visible-primary { color: var(--foreground); font-weight: 700; }
+  .visible-secondary { color: var(--text-muted); font-weight: 500; }
 }
