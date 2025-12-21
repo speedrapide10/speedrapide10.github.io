@@ -194,10 +194,10 @@ import {
                 </p>
                 <div class="flex flex-wrap justify-center gap-8 pt-8">
                     <a href="https://linkedin.com/in/oussama-karem" target="_blank" class="flex items-center gap-4 px-12 py-6 bg-[#0077b5] text-white rounded-full font-bold text-xl hover:scale-105 transition-all shadow-xl">
-                        <Linkedin size={28} /> LinkedIn
+                        <Linkedin size={28} /> LinkedIn Profile
                     </a>
                     <a href="https://github.com/speedrapide10" target="_blank" class="flex items-center gap-4 px-12 py-6 bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 text-white rounded-full font-bold text-xl hover:scale-105 transition-all shadow-xl">
-                        <Github size={28} /> GitHub
+                        <Github size={28} /> GitHub Repositories
                     </a>
                 </div>
             </div>
@@ -207,15 +207,10 @@ import {
 </Layout>
 
 <script>
-    /** * GSAP ANIMATIONS:
-     * We use GSAP to animate the elements as they appear on the screen.
-     * This adds a professional, smooth feeling to the portfolio.
-     */
     import gsap from 'gsap';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
     gsap.registerPlugin(ScrollTrigger);
 
-    // Initial load animation for the Big Name
     gsap.from(".reveal-hero h1", { 
         y: 100, 
         opacity: 0, 
@@ -224,7 +219,6 @@ import {
         ease: "expo.out" 
     });
     
-    // Animation for sections as you scroll down
     gsap.from(".reveal-content", {
         scrollTrigger: { trigger: ".reveal-content", start: "top 95%" },
         y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"

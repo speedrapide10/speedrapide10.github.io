@@ -8,8 +8,25 @@
     --text-muted: #18181b;
   }
 
+  /* Force Dark Mode when the .dark class is added to <html> */
+  html.dark {
+    --background: #09090b;
+    --foreground: #fafafa;
+    --card-bg: #111113;
+    --text-muted: #e4e4e7;
+  }
+
+  /* Force Light Mode when the .light class is added to <html> */
+  html.light {
+    --background: #e4e4e7;
+    --foreground: #09090b;
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --text-muted: #18181b;
+  }
+
+  /* Default System Dark Mode (runs if no manual class is set) */
   @media (prefers-color-scheme: dark) {
-    :root {
+    html:not(.light) {
       --background: #09090b;
       --foreground: #fafafa;
       --card-bg: #111113;
@@ -22,16 +39,14 @@
     color: var(--foreground);
     transition: background-color 0.4s ease, color 0.4s ease;
     font-family: 'Inter', sans-serif;
-    font-size: 20px; /* Increased base readability */
+    font-size: 20px;
   }
 
-  /* Command-style Outline Name */
   .outline-name {
     -webkit-text-stroke: 1.5px var(--foreground);
     letter-spacing: -0.01em;
   }
 
-  /* High-Visibility Interactive Containers */
   .interactive-card {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
