@@ -1,0 +1,67 @@
+---
+/** * THEME SWITCHER ICONS: Sun (Light), Monitor (System), Moon (Dark) */
+import { Sun, Moon, Monitor, FileText } from 'lucide-react';
+
+/* ==========================================================
+   RESUME CONFIGURATION
+   - Replace "#" with your actual file path (e.g., "/resume.pdf")
+   - If left as "#", it defaults to your LinkedIn profile.
+   ========================================================== */
+const RESUME_PATH = "#"; 
+const LINKEDIN_URL = "https://linkedin.com/in/oussama-karem";
+const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
+---
+<header class="fixed top-0 left-0 w-full z-[100] border-b border-zinc-500/20 bg-background/90 backdrop-blur-md">
+    <nav class="max-w-screen-2xl mx-auto px-6 md:px-16 py-4 md:py-6 flex justify-between items-center">
+        <a href="#" class="font-bold tracking-tighter text-lg md:text-2xl uppercase hover:text-blue-500 transition-colors">O.KAREM</a>
+        
+        <div class="flex items-center gap-3 md:gap-6">
+            <ul class="hidden lg:flex gap-10 font-mono text-sm uppercase tracking-widest mr-4">
+                <li><a href="#about" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-1">About</a></li>
+                <li><a href="#certifications" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-1">Certifications</a></li>
+                <li><a href="#arsenal" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-1">Skills</a></li>
+                <li><a href="#projects" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-1">Projects</a></li>
+                <li><a href="#connect" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-1">Connect</a></li>
+            </ul>
+
+            <a href={CV_LINK} target="_blank" class="hidden sm:flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white text-[13px] font-bold uppercase tracking-widest rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/20">
+                <FileText size={14} /> Resume
+            </a>
+
+            <div class="flex items-center gap-1 p-1 bg-zinc-500/10 rounded-full border border-zinc-500/20" id="theme-switcher">
+                <button data-theme="light" class="p-2 md:p-2.5 rounded-full transition-all hover:bg-zinc-500/20 text-zinc-500 aria-pressed:bg-blue-500 aria-pressed:text-white" aria-label="Light Mode">
+                    <Sun size={14} />
+                </button>
+                <button data-theme="system" class="p-2 md:p-2.5 rounded-full transition-all hover:bg-zinc-500/20 text-zinc-500 aria-pressed:bg-blue-500 aria-pressed:text-white" aria-label="System Mode">
+                    <Monitor size={14} />
+                </button>
+                <button data-theme="dark" class="p-2 md:p-2.5 rounded-full transition-all hover:bg-zinc-500/20 text-zinc-500 aria-pressed:bg-blue-500 aria-pressed:text-white" aria-label="Dark Mode">
+                    <Moon size={14} />
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+    const buttons = document.querySelectorAll('#theme-switcher button');
+    const applyTheme = (theme) => {
+        const root = document.documentElement;
+        root.classList.remove('light', 'dark');
+        if (theme === 'dark') root.classList.add('dark');
+        if (theme === 'light') root.classList.add('light');
+        localStorage.setItem('theme', theme);
+        buttons.forEach(btn => {
+            const isPressed = btn.getAttribute('data-theme') === theme;
+            btn.setAttribute('aria-pressed', isPressed.toString());
+        });
+    };
+    const savedTheme = localStorage.getItem('theme') || 'system';
+    applyTheme(savedTheme);
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const theme = btn.getAttribute('data-theme');
+            applyTheme(theme);
+        });
+    });
+</script>
