@@ -10,8 +10,6 @@ import {
 
 /* ==========================================================
    RESUME CONFIGURATION
-   - Replace "#" with your actual file path (e.g., "/resume.pdf")
-   - If left as "#", it defaults to your LinkedIn profile.
    ========================================================== */
 const RESUME_PATH = "#"; 
 const LINKEDIN_URL = "https://linkedin.com/in/oussama-karem";
@@ -150,8 +148,8 @@ const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
                             <div class="p-5 bg-blue-500/10 rounded-2xl text-blue-500"><Code2 size={40} /></div>
                             <ExternalLink size={24} class="opacity-20 group-hover:opacity-100 transition-opacity" />
                         </div>
-                        <h3 class="text-4xl font-bold uppercase tracking-tight mb-6 visible-primary">Ansible Fleet Security</h3>
-                        <p class="text-xl visible-secondary leading-relaxed mb-10">Automating the deployment of critical security patches and OS hardening policies across mixed RHEL and Debian environments using idempotent playbooks.</p>
+                        <h3 class="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-6 visible-primary transition-all">Ansible Fleet Security</h3>
+                        <p class="text-xl md:text-2xl visible-secondary leading-relaxed mb-10">Automating the deployment of critical security patches and OS hardening policies across mixed RHEL and Debian environments using idempotent playbooks.</p>
                     </div>
                     <div class="flex gap-4 flex-wrap">
                         <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest tag-hover transition-all">Ansible</span>
@@ -165,8 +163,8 @@ const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
                             <div class="p-5 bg-orange-500/10 rounded-2xl text-orange-500"><Shield size={40} /></div>
                             <ExternalLink size={24} class="opacity-20 group-hover:opacity-100 transition-opacity" />
                         </div>
-                        <h3 class="text-4xl font-bold uppercase tracking-tight mb-6 visible-primary">Cloudflare IaC Security</h3>
-                        <p class="text-xl visible-secondary leading-relaxed mb-10">Managing global edge security using Terraform to automate Cloudflare WAF rules, DNS zones, and Zero Trust access policies with version-controlled safety.</p>
+                        <h3 class="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-6 visible-primary transition-all">Cloudflare IaC Security</h3>
+                        <p class="text-xl md:text-2xl visible-secondary leading-relaxed mb-10">Managing global edge security using Terraform to automate Cloudflare WAF rules, DNS zones, and Zero Trust access policies with version-controlled safety.</p>
                     </div>
                     <div class="flex gap-4 flex-wrap">
                         <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest tag-hover transition-all">Terraform</span>
@@ -180,8 +178,8 @@ const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
                             <div class="p-5 bg-green-500/10 rounded-2xl text-green-500"><Lock size={40} /></div>
                             <ExternalLink size={24} class="opacity-20 group-hover:opacity-100 transition-opacity" />
                         </div>
-                        <h3 class="text-4xl font-bold uppercase tracking-tight mb-6 visible-primary">OPNSense Virtual Security</h3>
-                        <p class="text-xl visible-secondary leading-relaxed mb-10">Deploying and orchestrating OPNSense firewalls within Proxmox clusters to secure internal VM traffic and automate site-to-site VPN tunnels.</p>
+                        <h3 class="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-6 visible-primary transition-all">OPNSense Virtual Security</h3>
+                        <p class="text-xl md:text-2xl visible-secondary leading-relaxed mb-10">Deploying and orchestrating OPNSense firewalls within Proxmox clusters to secure internal VM traffic and automate site-to-site VPN tunnels.</p>
                     </div>
                     <div class="flex gap-4 flex-wrap">
                         <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest tag-hover transition-all">OPNSense</span>
@@ -189,12 +187,11 @@ const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
                         <span class="px-5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-full text-xs font-bold uppercase tracking-widest tag-hover transition-all">Firewall</span>
                     </div>
                 </div>
-
                 <div class="group p-12 glass-card border-dashed animate-learning-pulse rounded-[3rem] flex flex-col justify-center text-center">
                     <div class="flex flex-col items-center">
                         <RefreshCw size={48} class="text-blue-500 mb-6 animate-spin-slow" />
-                        <h3 class="text-3xl font-bold uppercase tracking-tight mb-4 visible-primary">Learning New Tech</h3>
-                        <p class="text-lg visible-secondary italic leading-relaxed">
+                        <h3 class="text-3xl md:text-6xl font-bold uppercase tracking-tight mb-4 visible-primary">Learning New Tech</h3>
+                        <p class="text-xl md:text-2xl visible-secondary italic leading-relaxed">
                             "Currently exploring Kubernetes orchestration, Advanced CI/CD patterns, and Go-based system tools. Always evolving."
                         </p>
                     </div>
