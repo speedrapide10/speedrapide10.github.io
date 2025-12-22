@@ -1,8 +1,8 @@
 ---
 /** * FRIENDLY SYSOPS SIDEKICK: 
  * - Invites users to click for fun effects.
- * - Shrinks after timeout/scroll.
- * - Random high-energy Infrastructure & Cloud messages with emojis (No 🌈).
+ * - Auto-shrinks after 12 seconds OR on scroll.
+ * - Random high-energy messages focusing on IaC and Automation.
  */
 ---
 <div id="mascot-wrapper" class="fixed bottom-20 left-10 md:left-20 z-[40] pointer-events-auto select-none hidden md:block transition-all duration-700 cursor-pointer origin-bottom-left group">
@@ -59,16 +59,7 @@
     window.addEventListener('load', () => {
         const tl = gsap.timeline({ delay: 3 });
         tl.to(bubble, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" });
-        
-        gsap.to(svg, {
-            y: -20,
-            scaleY: 1.02,
-            duration: 2,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut"
-        });
-
+        gsap.to(svg, { y: -20, scaleY: 1.02, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" });
         setTimeout(shrinkMascot, 12000); 
     });
 
@@ -78,22 +69,19 @@
 
     wrapper?.addEventListener('click', () => {
         const funMessages = [
-            "Infrastructure is feeling GREAT! ☁️✨",
+            "Ansible Playbook finished: Servers are in sync! 🛠️✨",
+            "Terraform plan: 0 to destroy, life is good! 🌍🏗️",
+            "Python script completed: Automation is magic! 🐍🦾",
+            "Infrastructure state is 100% consistent! 💎✅",
+            "Bash script just saved 4 hours of work! 🐚⚡",
+            "Packages updated and configs polished! 📦✨",
             "Uptime is looking solid: 99.99%! 🚀",
-            "Ansible just automated the coffee machine! ☕🦾",
-            "Cloudflare is blocking the bad vibes! 🛡️✨",
-            "Servers are patched and cozy! 🛌💻",
-            "Terraform created a new planet today! 🌍🏗️",
-            "Everything is scaling perfectly! 📈💎",
             "Deploying happiness to production! 🎈🔥"
         ];
-        
         const randomMsg = funMessages[Math.floor(Math.random() * funMessages.length)];
-        
         if (bubbleText) {
             bubbleText.innerHTML = `<span class="text-blue-500 font-black text-base italic">STATUS UPDATE:</span><br/><span class="text-base font-bold">${randomMsg}</span>`;
         }
-
         const clickTL = gsap.timeline();
         const bubbleScale = isSmall ? 1.7 : 1;
         const bubbleY = isSmall ? -40 : 0; 
@@ -101,12 +89,7 @@
         clickTL.to(antenna, { fill: "#60a5fa", duration: 0.1, repeat: 5, yoyo: true })
                .to(svg, { rotation: "+=360", scale: 1.2, duration: 0.8, ease: "back.inOut" }, 0)
                .to(svg, { scale: 1, duration: 0.3 })
-               .to(bubble, { 
-                    opacity: 1, 
-                    scale: bubbleScale, 
-                    y: bubbleY,
-                    duration: 0.4 
-                }, 0)
+               .to(bubble, { opacity: 1, scale: bubbleScale, y: bubbleY, duration: 0.4 }, 0)
                .to(bubble, { opacity: 0, scale: 0.5, duration: 0.4, delay: 10 }); 
     });
 
@@ -117,11 +100,6 @@
         const botY = rect.top + rect.height / 2;
         const angle = Math.atan2(e.clientY - botY, e.clientX - botX);
         const pupilDist = 5;
-        gsap.to([leftPupil, rightPupil], {
-            x: Math.cos(angle) * pupilDist,
-            y: Math.sin(angle) * pupilDist,
-            duration: 0.8,
-            ease: "power2.out"
-        });
+        gsap.to([leftPupil, rightPupil], { x: Math.cos(angle) * pupilDist, y: Math.sin(angle) * pupilDist, duration: 0.8, ease: "power2.out" });
     });
 </script>
