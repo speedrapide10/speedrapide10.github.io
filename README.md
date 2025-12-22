@@ -1,43 +1,24 @@
-# Astro Starter Kit: Minimal
+### 🛠️ Project 1: Ansible Fleet Security
+**Technical Description:** An automated security orchestration framework designed to enforce infrastructure compliance and OS hardening across hybrid Linux environments (RHEL & Debian). This project leverages idempotent Ansible playbooks to standardize server configurations, automate critical security patching cycles, and implement SSH hardening policies at scale.
 
-```sh
-npm create astro@latest -- --template minimal
-```
+* **Core Logic:** Idempotent configuration management.
+* **Tech Stack:** Ansible, Python, RHEL, Debian GNU/Linux.
+* **Value:** Eliminates configuration drift and ensures 100% compliance with organizational security baselines.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+### 🌍 Project 2: Cloudflare IaC Security
+**Technical Description:** Infrastructure-as-Code (IaC) implementation for global edge security management. This project utilizes Terraform to provision and manage Cloudflare resources, including WAF (Web Application Firewall) custom rule sets, DNS zone configurations, and Zero Trust access policies. 
 
-Inside of your Astro project, you'll see the following folders and files:
+* **Core Logic:** GitOps-driven infrastructure provisioning.
+* **Tech Stack:** Terraform, Cloudflare API, HCL (HashiCorp Configuration Language).
+* **Value:** Provides a version-controlled, reproducible security perimeter with automated deployment pipelines.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+---
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### 🛡️ Project 3: OPNSense Virtual Security
+**Technical Description:** Advanced network orchestration and virtualization security project focused on Proxmox VE environments. It involves the deployment of virtualized OPNSense firewalls to manage internal VM traffic segmentation (VLANs), implement site-to-site VPN tunnels (WireGuard/OpenVPN), and enforce strict firewall rules within automated clusters.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+* **Core Logic:** Virtualized network segmentation and encrypted tunneling.
+* **Tech Stack:** OPNSense, Proxmox VE, WireGuard, OpenVPN.
+* **Value:** Secures internal cloud traffic and enables reliable, encrypted cross-site connectivity for distributed infrastructure.
