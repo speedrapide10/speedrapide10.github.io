@@ -4,42 +4,55 @@
   :root {
     --background: #e4e4e7; 
     --foreground: #09090b;
-    --card-bg: rgba(255, 255, 255, 0.8);
+    --card-bg: rgba(255, 255, 255, 0.85);
     --text-muted: #18181b;
+    /* LIGHT MODE GRADIENT FIX: Increased opacity for higher visibility */
+    --accent-glow: rgba(59, 130, 246, 0.45);
   }
 
-  /* Force Dark Mode when the .dark class is added to <html> */
+  /* Force Dark Mode */
   html.dark {
     --background: #09090b;
     --foreground: #fafafa;
     --card-bg: #111113;
     --text-muted: #e4e4e7;
+    --accent-glow: rgba(30, 58, 138, 0.35);
   }
 
-  /* Force Light Mode when the .light class is added to <html> */
+  /* Force Light Mode */
   html.light {
     --background: #e4e4e7;
     --foreground: #09090b;
-    --card-bg: rgba(255, 255, 255, 0.8);
+    --card-bg: rgba(255, 255, 255, 0.85);
     --text-muted: #18181b;
+    /* LIGHT MODE GRADIENT FIX: Increased opacity */
+    --accent-glow: rgba(59, 130, 246, 0.45);
   }
 
-  /* Default System Dark Mode (runs if no manual class is set) */
+  /* Default System Dark Mode */
   @media (prefers-color-scheme: dark) {
     html:not(.light) {
       --background: #09090b;
       --foreground: #fafafa;
       --card-bg: #111113;
       --text-muted: #e4e4e7;
+      --accent-glow: rgba(30, 58, 138, 0.35);
     }
   }
 
   body {
-    background-color: var(--background);
     color: var(--foreground);
+    background-color: var(--background);
+    /* CLOUD MESH GRADIENT: Fixed angle and increased size for better blend */
+    background-image: 
+      radial-gradient(at 0% 0%, var(--accent-glow) 0, transparent 70%),
+      radial-gradient(at 100% 100%, var(--accent-glow) 0, transparent 70%);
+    background-attachment: fixed;
+    
     transition: background-color 0.4s ease, color 0.4s ease;
     font-family: 'Inter', sans-serif;
     font-size: 20px;
+    min-height: 100vh;
   }
 
   .outline-name {
@@ -53,7 +66,7 @@
   .interactive-card:hover {
     transform: translateY(-8px) scale(1.02);
     border-color: rgba(59, 130, 246, 0.5);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
   }
 
   .visible-primary { color: var(--foreground); font-weight: 700; }
