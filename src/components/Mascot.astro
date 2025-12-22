@@ -44,8 +44,7 @@
 
     let isSmall = false;
 
-    // Helper: Shrink and Move to Corner
-    // UPDATED: Added duration parameter to control animation speed
+    // Fast-react shrink function
     const shrinkMascot = (duration = 1.2) => {
         if (isSmall) return;
         isSmall = true;
@@ -59,23 +58,18 @@
         gsap.to(bubble, { opacity: 0, scale: 0.5, duration: 0.4 });
     };
 
-    // 1. Initial Intro Animation
     window.addEventListener('load', () => {
         const tl = gsap.timeline({ delay: 3 });
         tl.to(bubble, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" });
         gsap.to(svg, { y: -20, scaleY: 1.02, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" });
-        
-        // Keep slow shrink for the automatic timeout
         setTimeout(() => shrinkMascot(1.2), 12000); 
     });
 
-    // 2. Optimized Shrink on Scroll
-    // UPDATED: Triggers at 20px with 0.5s duration for "fast" feel
+    // NEW: Faster shrink (0.5s) on tiny scroll (20px)
     window.addEventListener('scroll', () => {
         if (window.scrollY > 20) shrinkMascot(0.5);
     });
 
-    // 3. INTERACTIVE CLICK EVENT
     wrapper?.addEventListener('click', () => {
         const funMessages = [
             "Ansible Playbook finished: Servers are in sync! 🛠️✨",
@@ -102,7 +96,6 @@
                .to(bubble, { opacity: 0, scale: 0.5, duration: 0.4, delay: 10 }); 
     });
 
-    // 4. Eye Tracking
     window.addEventListener('mousemove', (e) => {
         if (!wrapper || !leftPupil || !rightPupil) return;
         const rect = wrapper.getBoundingClientRect();
