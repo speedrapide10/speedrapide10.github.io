@@ -36,10 +36,10 @@ const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
                 </p>
 
                 <div class="relative">
-                    <h1 class="text-5xl sm:text-7xl lg:text-[9rem] xl:text-[11rem] 2xl:text-[13rem] font-black tracking-tighter leading-[0.75] uppercase select-none text-zinc-800 dark:text-zinc-300">
+                    <h1 class="text-5xl sm:text-7xl lg:text-[9rem] xl:text-[11rem] 2xl:text-[13rem] font-black tracking-tighter leading-[0.75] uppercase select-none text-foreground opacity-0 hero-name-1">
                         OUSSAMA
                     </h1>
-                    <h1 class="text-5xl sm:text-7xl lg:text-[9rem] xl:text-[11rem] 2xl:text-[13rem] font-black leading-[0.75] uppercase text-transparent outline-name opacity-50 hover:opacity-100 transition-all duration-1000 cursor-default md:ml-8 mt-2 md:mt-4">
+                    <h1 class="text-5xl sm:text-7xl lg:text-[9rem] xl:text-[11rem] 2xl:text-[13rem] font-black leading-[0.75] uppercase text-transparent outline-name opacity-0 hover:opacity-100 transition-all duration-1000 cursor-default md:ml-8 mt-2 md:mt-4 hero-name-2">
                         KAREM
                     </h1>
                 </div>
@@ -224,6 +224,20 @@ const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
     import gsap from 'gsap';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
     gsap.registerPlugin(ScrollTrigger);
-    gsap.from(".reveal-hero h1", { y: 100, opacity: 0, duration: 1.2, stagger: 0.2, ease: "expo.out" });
-    gsap.from(".reveal-content", { scrollTrigger: { trigger: ".reveal-content", start: "top 95%" }, y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out" });
+
+    // SYNC FIX: Explicit fromTo for deterministic visibility. 
+    // Delay set to 3.5s to ensure loading screen is completely clear.
+    gsap.fromTo(".hero-name-1", 
+        { y: 100, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 1.2, ease: "expo.out", delay: 3.5 }
+    );
+    gsap.fromTo(".hero-name-2", 
+        { y: 100, opacity: 0 }, 
+        { y: 0, opacity: 0.5, duration: 1.2, ease: "expo.out", delay: 3.7 }
+    );
+
+    gsap.from(".reveal-content", { 
+        scrollTrigger: { trigger: ".reveal-content", start: "top 95%" }, 
+        y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out" 
+    });
 </script>
