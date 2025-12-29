@@ -1,11 +1,9 @@
 ---
-/** * THEME SWITCHER ICONS: Sun (Light), Monitor (System), Moon (Dark) */
-import { Sun, Moon, Monitor, FileText } from 'lucide-react';
+/** * THEME SWITCHER & MOBILE MENU ICONS */
+import { Sun, Moon, Monitor, FileText, Menu, X } from 'lucide-react';
 
 /* ==========================================================
    RESUME CONFIGURATION
-   - Replace "#" with your actual file path (e.g., "/resume.pdf")
-   - If left as "#", it defaults to your LinkedIn profile.
    ========================================================== */
 const RESUME_PATH = "#"; 
 const LINKEDIN_URL = "https://linkedin.com/in/oussama-karem";
@@ -24,10 +22,6 @@ const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
                 <li><a href="#connect" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-1">Connect</a></li>
             </ul>
 
-            <a href={CV_LINK} target="_blank" class="hidden sm:flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white text-[13px] font-bold uppercase tracking-widest rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/20">
-                <FileText size={14} /> Resume
-            </a>
-
             <div class="flex items-center gap-1 p-1 bg-zinc-500/10 rounded-full border border-zinc-500/20" id="theme-switcher">
                 <button data-theme="light" class="p-2 md:p-2.5 rounded-full transition-all hover:bg-zinc-500/20 text-zinc-500 aria-pressed:bg-blue-500 aria-pressed:text-white" aria-label="Light Mode">
                     <Sun size={14} />
@@ -39,29 +33,73 @@ const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
                     <Moon size={14} />
                 </button>
             </div>
+
+            <button id="mobile-menu-toggle" class="lg:hidden p-3 text-blue-600 dark:text-blue-400 bg-blue-500/10 border border-blue-500/30 rounded-full transition-all z-[110] active:scale-90" aria-label="Toggle Menu">
+                <span id="menu-icon-open"><Menu size={22} strokeWidth={2.5} /></span>
+                <span id="menu-icon-close" class="hidden"><X size={22} strokeWidth={2.5} /></span>
+            </button>
         </div>
     </nav>
 </header>
 
+<div id="mobile-menu-overlay" class="fixed inset-0 z-[90] bg-background/98 backdrop-blur-3xl flex flex-col items-center justify-center invisible opacity-0 lg:hidden">
+    <ul class="flex flex-col gap-10 font-mono text-2xl uppercase tracking-[0.2em] text-center">
+        <li><a href="#about" class="mobile-nav-link text-foreground font-black hover:text-blue-500 transition-all">About</a></li>
+        <li><a href="#certifications" class="mobile-nav-link text-foreground font-black hover:text-blue-500 transition-all">Certifications</a></li>
+        <li><a href="#arsenal" class="mobile-nav-link text-foreground font-black hover:text-blue-500 transition-all">Skills</a></li>
+        <li><a href="#projects" class="mobile-nav-link text-foreground font-black hover:text-blue-500 transition-all">Projects</a></li>
+        <li><a href="#connect" class="mobile-nav-link text-foreground font-black hover:text-blue-500 transition-all">Connect</a></li>
+        <li class="mt-8 px-10 w-full">
+            <a href={CV_LINK} target="_blank" class="mobile-nav-link flex justify-center items-center gap-3 py-5 bg-blue-600 text-white text-base font-bold uppercase tracking-widest rounded-full shadow-2xl">
+                <FileText size={20} /> View Resume
+            </a>
+        </li>
+    </ul>
+</div>
+
 <script>
-    const buttons = document.querySelectorAll('#theme-switcher button');
+    import gsap from 'gsap';
+
+    // 1. THEME SWITCHER
+    const themeButtons = document.querySelectorAll('#theme-switcher button');
     const applyTheme = (theme) => {
         const root = document.documentElement;
         root.classList.remove('light', 'dark');
         if (theme === 'dark') root.classList.add('dark');
         if (theme === 'light') root.classList.add('light');
         localStorage.setItem('theme', theme);
-        buttons.forEach(btn => {
-            const isPressed = btn.getAttribute('data-theme') === theme;
-            btn.setAttribute('aria-pressed', isPressed.toString());
-        });
+        themeButtons.forEach(btn => btn.setAttribute('aria-pressed', (btn.getAttribute('data-theme') === theme).toString()));
     };
     const savedTheme = localStorage.getItem('theme') || 'system';
     applyTheme(savedTheme);
-    buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const theme = btn.getAttribute('data-theme');
-            applyTheme(theme);
-        });
-    });
+    themeButtons.forEach(btn => btn.addEventListener('click', () => applyTheme(btn.getAttribute('data-theme'))));
+
+    // 2. MOBILE MENU LOGIC
+    const toggleBtn = document.getElementById('mobile-menu-toggle');
+    const overlay = document.getElementById('mobile-menu-overlay');
+    const openIcon = document.getElementById('menu-icon-open');
+    const closeIcon = document.getElementById('menu-icon-close');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    let isOpen = false;
+    gsap.set(overlay, { xPercent: 100 });
+
+    const toggleMenu = () => {
+        isOpen = !isOpen;
+        if (isOpen) {
+            gsap.to(overlay, { xPercent: 0, autoAlpha: 1, duration: 0.5, ease: "power4.out" });
+            gsap.fromTo(".mobile-nav-link", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, delay: 0.2 });
+            openIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+        } else {
+            gsap.to(overlay, { xPercent: 100, autoAlpha: 0, duration: 0.4, ease: "power4.in" });
+            openIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            document.body.style.overflow = 'auto'; 
+        }
+    };
+
+    toggleBtn?.addEventListener('click', toggleMenu);
+    mobileLinks.forEach(link => link.addEventListener('click', () => { if (isOpen) toggleMenu(); }));
 </script>

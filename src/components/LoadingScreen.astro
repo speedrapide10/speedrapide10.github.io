@@ -23,7 +23,6 @@
 
 <script>
     import gsap from 'gsap';
-
     const tl = gsap.timeline();
     const percentEl = document.getElementById('loader-percent');
     const barEl = document.getElementById('loader-bar');
@@ -50,6 +49,7 @@
         duration: 0.8,
         ease: "power2.inOut",
         onComplete: () => {
+            // SCROLLBAR FIX: Force unlock body overflow
             document.body.style.overflow = 'auto';
             if (loaderEl) loaderEl.style.display = 'none';
         }
