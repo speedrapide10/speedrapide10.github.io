@@ -1,4 +1,4 @@
-<div id="cursor-ring" class="fixed top-0 left-0 w-12 h-12 border border-blue-500/40 rounded-full pointer-events-none z-[9999] opacity-0 flex items-center justify-center transition-transform duration-75">
+<div id="cursor-ring" class="hidden md:flex fixed top-0 left-0 w-12 h-12 border border-blue-500/40 rounded-full pointer-events-none z-[9999] opacity-0 items-center justify-center transition-transform duration-75">
     <span class="text-xl select-none leading-none">🐧</span>
 </div>
 
@@ -6,18 +6,23 @@
     import gsap from 'gsap';
     const ring = document.getElementById('cursor-ring');
 
-    window.addEventListener('mousemove', (e) => {
-        gsap.to(ring, { 
-            x: e.clientX - 24, 
-            y: e.clientY - 24, 
-            duration: 0.15,
-            ease: "power2.out"
+    // Optimization: Only attach listeners if on desktop (width > 768px) AND using a fine pointer (mouse)
+    // This prevents the script from wasting resources on mobile/touch devices.
+    if (window.matchMedia("(min-width: 768px) and (pointer: fine)").matches) {
+        
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(ring, { 
+                x: e.clientX - 24, 
+                y: e.clientY - 24, 
+                duration: 0.15,
+                ease: "power2.out"
+            });
+            if (ring) ring.style.opacity = '1';
         });
-        if (ring) ring.style.opacity = '1';
-    });
 
-    document.querySelectorAll('a, button').forEach(el => {
-        el.addEventListener('mouseenter', () => gsap.to(ring, { scale: 1.4, backgroundColor: 'rgba(59, 130, 246, 0.05)', borderColor: 'rgba(59, 130, 246, 0.6)' }));
-        el.addEventListener('mouseleave', () => gsap.to(ring, { scale: 1, backgroundColor: 'transparent', borderColor: 'rgba(59, 130, 246, 0.3)' }));
-    });
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => gsap.to(ring, { scale: 1.4, backgroundColor: 'rgba(59, 130, 246, 0.05)', borderColor: 'rgba(59, 130, 246, 0.6)' }));
+            el.addEventListener('mouseleave', () => gsap.to(ring, { scale: 1, backgroundColor: 'transparent', borderColor: 'rgba(59, 130, 246, 0.3)' }));
+        });
+    }
 </script>
