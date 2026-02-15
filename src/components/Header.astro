@@ -34,24 +34,24 @@ const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
                 </button>
             </div>
 
-            <button id="mobile-menu-toggle" class="lg:hidden p-3 text-blue-600 dark:text-blue-400 bg-blue-500/10 border border-blue-500/30 rounded-full transition-all z-[110] active:scale-90" aria-label="Toggle Menu">
-                <span id="menu-icon-open"><Menu size={22} strokeWidth={2.5} /></span>
-                <span id="menu-icon-close" class="hidden"><X size={22} strokeWidth={2.5} /></span>
+            <button id="mobile-menu-toggle" class="lg:hidden p-3 text-white bg-blue-600 border-2 border-blue-400/30 rounded-full transition-all z-[110] shadow-lg active:scale-90" aria-label="Toggle Menu">
+                <span id="menu-icon-open"><Menu size={22} strokeWidth={3} /></span>
+                <span id="menu-icon-close" class="hidden"><X size={22} strokeWidth={3} /></span>
             </button>
         </div>
     </nav>
 </header>
 
-<div id="mobile-menu-overlay" class="fixed inset-0 z-[90] bg-background/98 backdrop-blur-3xl flex flex-col items-center justify-center invisible opacity-0 lg:hidden">
+<div id="mobile-menu-overlay" class="fixed inset-0 z-[90] bg-zinc-950/98 backdrop-blur-3xl flex flex-col items-center justify-center invisible opacity-0 lg:hidden">
     <ul class="flex flex-col gap-10 font-mono text-2xl uppercase tracking-[0.2em] text-center">
-        <li><a href="#about" class="mobile-nav-link text-foreground font-black hover:text-blue-500 transition-all">About</a></li>
-        <li><a href="#certifications" class="mobile-nav-link text-foreground font-black hover:text-blue-500 transition-all">Certifications</a></li>
-        <li><a href="#arsenal" class="mobile-nav-link text-foreground font-black hover:text-blue-500 transition-all">Skills</a></li>
-        <li><a href="#projects" class="mobile-nav-link text-foreground font-black hover:text-blue-500 transition-all">Projects</a></li>
-        <li><a href="#connect" class="mobile-nav-link text-foreground font-black hover:text-blue-500 transition-all">Connect</a></li>
+        <li><a href="#about" class="mobile-nav-link text-white font-black hover:text-blue-500 transition-all">About</a></li>
+        <li><a href="#certifications" class="mobile-nav-link text-white font-black hover:text-blue-500 transition-all">Certifications</a></li>
+        <li><a href="#arsenal" class="mobile-nav-link text-white font-black hover:text-blue-500 transition-all">Skills</a></li>
+        <li><a href="#projects" class="mobile-nav-link text-white font-black hover:text-blue-500 transition-all">Projects</a></li>
+        <li><a href="#connect" class="mobile-nav-link text-white font-black hover:text-blue-500 transition-all">Connect</a></li>
         <li class="mt-8 px-10 w-full">
-            <a href={CV_LINK} target="_blank" class="mobile-nav-link flex justify-center items-center gap-3 py-5 bg-blue-600 text-white text-base font-bold uppercase tracking-widest rounded-full shadow-2xl">
-                <FileText size={20} /> View Resume
+            <a href={CV_LINK} target="_blank" class="mobile-nav-link flex justify-center items-center gap-3 px-8 py-4 bg-blue-600 text-white text-base font-bold uppercase tracking-widest rounded-full shadow-2xl">
+                <FileText size={20} /> Resume
             </a>
         </li>
     </ul>

@@ -49,8 +49,8 @@
         duration: 0.8,
         ease: "power2.inOut",
         onComplete: () => {
-            // SCROLLBAR FIX: Force unlock body overflow
-            document.body.style.overflow = 'auto';
+            // SCROLLBAR FIX: Clear the inline style so CSS takes over (overflow-x: hidden)
+            document.body.style.overflow = '';
             if (loaderEl) loaderEl.style.display = 'none';
         }
     });
