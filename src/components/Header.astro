@@ -22,7 +22,7 @@ const CV_LINK = RESUME_PATH ? RESUME_PATH : LINKEDIN_URL;
                 <li><a href="#connect" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-0.5">Connect</a></li>
             </ul>
 
-            <!-- THEME SWITCHER -->
+            <!-- THEME SWITCHER (System Mode default selected) -->
             <div class="flex items-center gap-0.5 sm:gap-1 p-1 bg-zinc-500/10 rounded-full border border-zinc-500/20 shrink-0 z-[110]" id="theme-switcher">
                 <button data-theme="light" class="p-1.5 lg:p-2 rounded-full transition-all hover:bg-zinc-500/20 text-zinc-500 aria-pressed:bg-blue-500 aria-pressed:text-white cursor-pointer" aria-label="Light Mode">
                     <Sun class="w-3.5 h-3.5 lg:w-3.5 lg:h-3.5" />
@@ -83,7 +83,8 @@ const CV_LINK = RESUME_PATH ? RESUME_PATH : LINKEDIN_URL;
         root.classList.add(effectiveTheme);
 
         themeButtons.forEach(btn => {
-            btn.setAttribute('aria-pressed', (btn.getAttribute('data-theme') === selectedTheme).toString());
+            const isSelected = btn.getAttribute('data-theme') === selectedTheme;
+            btn.setAttribute('aria-pressed', isSelected.toString());
         });
     };
 
@@ -92,9 +93,9 @@ const CV_LINK = RESUME_PATH ? RESUME_PATH : LINKEDIN_URL;
         updateThemeUI(theme);
     };
 
-    // Load initial theme state
+    // Guarantee default is 'system' on first visit
     const savedTheme = localStorage.getItem('theme') || 'system';
-    applyTheme(savedTheme);
+    updateThemeUI(savedTheme);
 
     // Listen for manual button clicks
     themeButtons.forEach(btn => {

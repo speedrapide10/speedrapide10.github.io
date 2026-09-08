@@ -19,10 +19,15 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
-    <!-- Inline System Theme Pre-hydration Script (Prevents FOUC) -->
+    <!-- Pre-hydration Script: Defaults to 'system' if no theme key exists in localStorage -->
     <script is:inline>
       (function() {
-        const savedTheme = localStorage.getItem('theme') || 'system';
+        let savedTheme = localStorage.getItem('theme');
+        if (!savedTheme) {
+          savedTheme = 'system';
+          localStorage.setItem('theme', 'system');
+        }
+        
         const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const effectiveTheme = savedTheme === 'system' ? (systemDark ? 'dark' : 'light') : savedTheme;
         
