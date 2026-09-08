@@ -8,7 +8,7 @@ const CV_LINK = RESUME_PATH ? RESUME_PATH : LINKEDIN_URL;
 
 <header class="fixed top-0 left-0 w-full z-[100] border-b border-zinc-500/20 bg-background/90 backdrop-blur-md">
     <nav class="max-w-screen-2xl mx-auto px-4 lg:px-8 xl:px-16 py-2.5 lg:py-3 xl:py-5 flex justify-between items-center">
-        <a href="#" id="brand-logo" class="font-bold tracking-tighter text-base lg:text-lg xl:text-2xl uppercase hover:text-blue-500 transition-colors shrink-0">O.KAREM</a>
+        <a href="#" id="brand-logo" class="font-bold tracking-tighter text-base lg:text-lg xl:text-2xl uppercase hover:text-blue-500 transition-colors shrink-0 z-[110]">O.KAREM</a>
         
         <div class="flex items-center gap-2 lg:gap-4 xl:gap-6">
             <!-- DESKTOP NAVIGATION -->
@@ -22,7 +22,7 @@ const CV_LINK = RESUME_PATH ? RESUME_PATH : LINKEDIN_URL;
             </ul>
 
             <!-- THEME SWITCHER -->
-            <div class="flex items-center gap-0.5 sm:gap-1 p-1 bg-zinc-500/10 rounded-full border border-zinc-500/20 shrink-0" id="theme-switcher">
+            <div class="flex items-center gap-0.5 sm:gap-1 p-1 bg-zinc-500/10 rounded-full border border-zinc-500/20 shrink-0 z-[110]" id="theme-switcher">
                 <button data-theme="light" class="p-1.5 lg:p-2 rounded-full transition-all hover:bg-zinc-500/20 text-zinc-500 aria-pressed:bg-blue-500 aria-pressed:text-white" aria-label="Light Mode">
                     <Sun class="w-3.5 h-3.5 lg:w-3.5 lg:h-3.5" />
                 </button>
@@ -91,13 +91,15 @@ const CV_LINK = RESUME_PATH ? RESUME_PATH : LINKEDIN_URL;
         if (isOpen) {
             gsap.to(overlay, { xPercent: 0, autoAlpha: 1, duration: 0.4, ease: "power4.out" });
             gsap.fromTo(".mobile-nav-link", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.08, delay: 0.15 });
-            openIcon.classList.add('hidden');
-            closeIcon.classList.remove('hidden');
+            openIcon?.classList.add('hidden');
+            closeIcon?.classList.remove('hidden');
+            brandLogo?.classList.add('text-white');
             document.body.style.overflow = 'hidden'; 
         } else {
             gsap.to(overlay, { xPercent: 100, autoAlpha: 0, duration: 0.3, ease: "power4.in" });
-            openIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
+            openIcon?.classList.remove('hidden');
+            closeIcon?.classList.add('hidden');
+            brandLogo?.classList.remove('text-white');
             document.body.style.overflow = 'auto'; 
         }
     };

@@ -7,21 +7,22 @@ const LINKEDIN_URL = "https://linkedin.com/in/oussama-karem";
 const CV_LINK = RESUME_PATH ? RESUME_PATH : LINKEDIN_URL;
 ---
 
-<section class="min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-center items-start pt-2 lg:pt-0">
+<!-- Calibrated top padding (pt-20 sm:pt-24 lg:pt-28) reduces top whitespace while guaranteeing zero header collision across scales -->
+<section class="min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-center items-start pt-20 sm:pt-24 lg:pt-28 pb-8">
     <div class="reveal-hero w-full">
         <!-- Live Status Pills -->
-        <div class="flex flex-wrap items-center gap-2 md:gap-3 mb-3 lg:mb-4">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 dark:bg-sky-400/10 border border-blue-500/30 dark:border-sky-400/30">
-                <span class="relative flex h-2 w-2">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-3 lg:mb-4 max-w-full">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 dark:bg-sky-400/10 border border-blue-500/30 dark:border-sky-400/30 max-w-full">
+                <span class="relative flex h-2 w-2 shrink-0">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span class="text-[10px] sm:text-xs font-mono font-bold tracking-wider text-blue-700 dark:text-sky-300 uppercase">
+                <span class="text-[10px] sm:text-xs font-mono font-bold tracking-wider text-blue-700 dark:text-sky-300 uppercase truncate">
                     Systems Operational • Available for Roles & Freelance
                 </span>
             </div>
 
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-300/60 dark:bg-slate-800/80 border border-slate-400/30 dark:border-slate-700 text-[10px] sm:text-xs font-mono font-bold text-slate-800 dark:text-slate-200">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-300/60 dark:bg-slate-800/80 border border-slate-400/30 dark:border-slate-700 text-[10px] sm:text-xs font-mono font-bold text-slate-800 dark:text-slate-200 shrink-0 w-max max-w-full">
                 📍 UTC+1 • Salé, Morocco
             </div>
         </div>
