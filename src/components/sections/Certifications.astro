@@ -1,0 +1,26 @@
+---
+import { certifications } from '../../data/certifications';
+---
+
+<section id="certifications" class="pt-8 pb-16 md:pt-10 md:pb-32 border-t border-zinc-500/20 dark:border-white/10 reveal-content scroll-mt-28 md:scroll-mt-32">
+    <h2 class="text-xs md:text-sm font-bold tracking-[0.4em] md:tracking-[0.6em] uppercase opacity-60 mb-8 md:mb-16 italic visible-primary">/ Certifications</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+        {certifications.map((cert) => (
+            <div class={`group flex items-center gap-4 sm:gap-6 p-4 sm:p-6 md:p-8 glass-card rounded-2xl sm:rounded-3xl transition-all ${cert.hoverBorder}`}>
+                {cert.type === 'svg' ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox={cert.svgViewBox} class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 shrink-0" style={`fill: ${cert.color}`}>
+                        <path d={cert.svgPath} />
+                    </svg>
+                ) : (
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 shrink-0 rounded-xl flex items-center justify-center font-black text-white text-lg sm:text-xl md:text-2xl italic" style={`background-color: ${cert.color}`}>
+                        {cert.textBadge}
+                    </div>
+                )}
+                <div class="min-w-0 flex-1">
+                    <p class="text-xs sm:text-sm md:text-base font-bold uppercase visible-primary truncate">{cert.title}</p>
+                    <p class="text-[9px] sm:text-[10px] md:text-xs font-mono uppercase visible-secondary truncate">{cert.subtitle}</p>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>

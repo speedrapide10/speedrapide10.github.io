@@ -1,26 +1,24 @@
 ---
 import { ChevronUp } from 'lucide-react';
 ---
+
 <button 
     id="back-to-top" 
-    class="fixed bottom-10 right-6 md:right-10 z-[80] w-16 h-20 bg-zinc-200 dark:bg-zinc-800 border-2 border-zinc-400/40 dark:border-white/20 rounded-full flex flex-col items-center justify-center shadow-2xl opacity-0 invisible hover:scale-110 hover:border-blue-500 transition-all cursor-pointer group"
+    class="fixed bottom-4 right-4 lg:bottom-6 lg:right-6 xl:right-10 z-[80] w-11 h-14 lg:w-12 lg:h-16 xl:w-14 xl:h-18 bg-zinc-200/90 dark:bg-zinc-800/90 backdrop-blur-md border border-zinc-400/40 dark:border-white/20 rounded-full flex flex-col items-center justify-center shadow-2xl opacity-0 invisible hover:scale-110 hover:border-blue-500 transition-all cursor-pointer group"
     aria-label="Back to Top"
 >
-    <div class="flex flex-col items-center -space-y-3 mb-1">
-        <ChevronUp size={20} class="arrow-icon text-blue-600 dark:text-blue-400" />
-        <ChevronUp size={20} class="arrow-icon text-blue-600/50 dark:text-blue-400/50" />
+    <div class="flex flex-col items-center -space-y-2 md:-space-y-3 mb-0.5">
+        <ChevronUp class="w-4 h-4 lg:w-5 lg:h-5 arrow-icon text-blue-600 dark:text-blue-400" />
+        <ChevronUp class="w-4 h-4 lg:w-5 lg:h-5 arrow-icon text-blue-600/50 dark:text-blue-400/50" />
     </div>
-    
-    <span class="text-2xl">🐧</span>
 </button>
 
 <script>
     import gsap from 'gsap';
-
     const btn = document.getElementById('back-to-top');
 
     gsap.to(".arrow-icon", {
-        y: -4,
+        y: -3,
         duration: 0.8,
         repeat: -1,
         yoyo: true,
@@ -29,10 +27,10 @@ import { ChevronUp } from 'lucide-react';
     });
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            gsap.to(btn, { opacity: 1, visibility: 'visible', duration: 0.4, ease: "power2.out" });
+        if (window.scrollY > 400) {
+            gsap.to(btn, { opacity: 1, visibility: 'visible', duration: 0.3, ease: "power2.out" });
         } else {
-            gsap.to(btn, { opacity: 0, visibility: 'hidden', duration: 0.4, ease: "power2.in" });
+            gsap.to(btn, { opacity: 0, visibility: 'hidden', duration: 0.3, ease: "power2.in" });
         }
     });
 

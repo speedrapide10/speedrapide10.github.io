@@ -1,0 +1,31 @@
+---
+import { skillCategories } from '../../data/skills';
+import { Terminal, Cpu, Activity, Layers, Network, Shield } from 'lucide-react';
+
+const iconMap: Record<string, any> = {
+  Terminal,
+  Cpu,
+  Activity,
+  Layers,
+  Network,
+  Shield
+};
+---
+
+<section id="arsenal" class="pt-10 pb-24 md:pt-10 md:pb-32 border-t border-zinc-500/20 dark:border-white/10 reveal-content scroll-mt-32">
+    <h2 class="text-xs md:text-sm font-bold tracking-[0.5em] md:tracking-[0.6em] uppercase opacity-60 mb-12 md:mb-16 italic visible-primary">/ Technical_Arsenal</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 pb-10">
+        {skillCategories.map((skill) => {
+            const IconComponent = iconMap[skill.icon];
+            return (
+                <div class="p-8 md:p-10 glass-card rounded-3xl space-y-4 md:space-y-6">
+                    <div class={`flex items-center gap-4 ${skill.color}`}>
+                        {IconComponent && <IconComponent size={22} />}
+                        <h3 class="font-bold uppercase tracking-widest text-xs md:text-sm">{skill.title}</h3>
+                    </div>
+                    <p class="text-sm visible-secondary leading-relaxed font-medium">{skill.description}</p>
+                </div>
+            );
+        })}
+    </div>
+</section>

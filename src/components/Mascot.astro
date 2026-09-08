@@ -1,22 +1,23 @@
 ---
-/** * FRIENDLY SYSOPS SIDEKICK: 
- * - Invites users to click for fun effects.
- * - Auto-shrinks after 12 seconds OR on scroll.
- * - NEW: Counter-scales the bubble when small to keep text large and readable.
- * - Random high-energy messages focusing on IaC and Automation.
+/**
+ * FRIENDLY SYSOPS SIDEKICK:
+ * - Height-clamped for 125% scaled screens to clear fixed elements.
+ * - Retains 5-click Overclock Easter Egg and center-origin spin.
  */
 ---
-<div id="mascot-wrapper" class="fixed bottom-20 left-10 md:left-20 z-[40] pointer-events-auto select-none hidden md:block transition-all duration-700 cursor-pointer origin-bottom-left group">
-    
-    <div id="welcome-bubble" class="absolute -top-28 lg:-top-32 left-0 bg-white dark:bg-zinc-800 border-2 border-blue-500 p-4 rounded-2xl rounded-bl-none shadow-2xl opacity-0 scale-50 transition-all duration-500 pointer-events-none origin-bottom-left">
-        <p id="bubble-text" class="text-sm font-bold text-zinc-800 dark:text-zinc-200 whitespace-nowrap leading-relaxed">
-            Hi! I'm Oussama's Cloud-Bot. 🤖<br/>
-            <span class="text-blue-500 animate-bounce inline-block mt-1">Click me for a magic trick! ✨</span>
+
+<div id="mascot-wrapper" class="fixed bottom-4 right-12 lg:bottom-6 lg:right-16 xl:right-28 z-[40] pointer-events-auto select-none hidden md:block transition-all duration-500 cursor-pointer origin-bottom-right group">
+    <!-- High-Contrast Speech Bubble -->
+    <div id="welcome-bubble" class="absolute right-0 -top-28 lg:-top-32 bg-zinc-900/95 border-2 border-blue-500 p-3 lg:p-4 rounded-2xl rounded-br-none shadow-[0_10px_30px_rgba(0,0,0,0.8)] opacity-0 scale-50 transition-all duration-300 pointer-events-none origin-bottom-right w-60 lg:w-72 xl:w-80 backdrop-blur-xl z-[120]">
+        <p id="bubble-text" class="text-xs lg:text-sm font-bold text-zinc-100 leading-relaxed">
+            Hi! I'm Oussama's Cloud-Bot. <br/>
+            <span class="text-blue-400 font-extrabold animate-pulse inline-block mt-0.5">Click me for a magic trick! ⚡</span>
         </p>
     </div>
 
-    <div id="bot-container" class="w-48 h-48 lg:w-40 lg:h-40 xl:w-56 xl:h-56 transition-transform">
-        <svg viewBox="0 0 120 120" class="w-full h-full drop-shadow-2xl" id="bot-svg">
+    <!-- Scaled Mascot Container -->
+    <div id="bot-container" class="w-20 h-20 lg:w-24 lg:h-24 xl:w-32 xl:h-32 transition-transform animate-float">
+        <svg viewBox="0 0 120 120" class="w-full h-full drop-shadow-2xl overflow-visible" id="bot-svg">
             <rect x="25" y="40" width="70" height="60" rx="30" class="fill-white dark:fill-zinc-800 stroke-blue-500 transition-colors duration-300" stroke-width="3" />
             <circle id="bot-antenna" cx="60" cy="30" r="8" class="fill-blue-500 animate-pulse" />
             <line x1="60" y1="38" x2="60" y2="42" stroke="#3b82f6" stroke-width="3" />
@@ -31,6 +32,16 @@
     </div>
 </div>
 
+<style>
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+    }
+    .animate-float {
+        animation: float 4s ease-in-out infinite;
+    }
+</style>
+
 <script>
     import gsap from 'gsap';
 
@@ -44,56 +55,102 @@
 
     let isSmall = false;
 
-    // Fast-react shrink function
-    const shrinkMascot = (duration = 1.2) => {
-        if (isSmall) return;
+    const shrinkMascot = () => {
+        if (isSmall || !wrapper) return;
         isSmall = true;
         gsap.to(wrapper, {
-            left: "2rem",
-            bottom: "2rem",
-            scale: 0.6,
-            duration: duration,
-            ease: "power3.inOut"
+            scale: 0.8,
+            duration: 0.8,
+            ease: "power2.inOut"
         });
-        gsap.to(bubble, { opacity: 0, scale: 0.5, duration: 0.4 });
+        if (bubble) gsap.to(bubble, { opacity: 0, scale: 0.5, duration: 0.3 });
     };
 
     window.addEventListener('load', () => {
-        const tl = gsap.timeline({ delay: 3 });
-        tl.to(bubble, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" });
-        gsap.to(svg, { y: -20, scaleY: 1.02, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" });
-        setTimeout(() => shrinkMascot(1.2), 12000); 
+        setTimeout(() => {
+            if (bubble) gsap.to(bubble, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" });
+        }, 2800);
+
+        setTimeout(() => shrinkMascot(), 10000);
     });
 
-    // Fast shrink on tiny scroll (20px)
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) shrinkMascot(0.5);
+        if (window.scrollY > 50) shrinkMascot();
     });
+
+    let clickCount = 0;
+    let clickResetTimer: NodeJS.Timeout;
+    let isAnimating = false;
 
     wrapper?.addEventListener('click', () => {
+        clickCount++;
+        clearTimeout(clickResetTimer);
+
+        clickResetTimer = setTimeout(() => {
+            clickCount = 0;
+        }, 1200);
+
+        if (isAnimating) return;
+
+        // Easter Egg: 5 Rapid Clicks
+        if (clickCount >= 5) {
+            isAnimating = true;
+            clickCount = 0;
+
+            if (bubbleText) {
+                bubbleText.innerHTML = `<span class="text-amber-400 font-extrabold text-xs lg:text-sm italic uppercase tracking-widest animate-pulse">⚡ OVERCLOCK MODE ⚡</span><br/><span class="text-xs lg:text-sm font-bold text-amber-200 block mt-1">SYSTEM CPU @ 5.0GHz! AUTOMATION 10x! 🔥🚀</span>`;
+            }
+
+            const overclockTL = gsap.timeline({
+                onComplete: () => { isAnimating = false; }
+            });
+
+            overclockTL
+                .to(antenna, { fill: "#f59e0b", duration: 0.1, repeat: 10, yoyo: true })
+                .to(svg, { 
+                    rotation: "+=1080", 
+                    scale: 1.2,
+                    transformOrigin: "center center", 
+                    duration: 1.2, 
+                    ease: "elastic.out(1, 0.4)" 
+                }, 0)
+                .to(svg, { scale: 1, duration: 0.3 })
+                .to(bubble, { opacity: 1, scale: 1, duration: 0.3 }, 0)
+                .to(bubble, { opacity: 0, scale: 0.5, duration: 0.4, delay: 7 });
+
+            return;
+        }
+
+        // Standard Click Messages
+        isAnimating = true;
         const funMessages = [
-            "Ansible Playbook finished: Servers are in sync! 🛠️✨",
-            "Terraform plan: 0 to destroy, life is good! 🌍🏗️",
-            "Python script completed: Automation is magic! 🐍🦾",
-            "Infrastructure state is 100% consistent! 💎✅",
-            "Bash script just saved 4 hours of work! 🐚⚡",
-            "Packages updated and configs polished! 📦✨",
-            "Uptime is looking solid: 99.99%! 🚀",
-            "Deploying happiness to production! 🎈🔥"
+            "Ansible Playbook: 0 failed, 100% in sync! 🚀",
+            "Terraform Plan: 0 to destroy, clean state! 🟢",
+            "Python script executed: Automation magic! ⚡",
+            "Cluster Health: 99.99% Uptime rock solid! 💻",
+            "Bash script saved 4 hours of manual labor! 🎉",
+            "OS Hardening complete: Baselines enforced! 🔒"
         ];
+
         const randomMsg = funMessages[Math.floor(Math.random() * funMessages.length)];
         if (bubbleText) {
-            bubbleText.innerHTML = `<span class="text-blue-500 font-black text-base italic">STATUS UPDATE:</span><br/><span class="text-base font-bold">${randomMsg}</span>`;
+            bubbleText.innerHTML = `<span class="text-blue-400 font-extrabold text-[10px] lg:text-xs italic uppercase tracking-wider block mb-0.5">STATUS UPDATE:</span><span class="text-xs lg:text-sm font-bold text-zinc-100">${randomMsg}</span>`;
         }
-        const clickTL = gsap.timeline();
-        const bubbleScale = isSmall ? 1.7 : 1;
-        const bubbleY = isSmall ? -40 : 0; 
 
-        clickTL.to(antenna, { fill: "#60a5fa", duration: 0.1, repeat: 5, yoyo: true })
-               .to(svg, { rotation: "+=360", scale: 1.2, duration: 0.8, ease: "back.inOut" }, 0)
-               .to(svg, { scale: 1, duration: 0.3 })
-               .to(bubble, { opacity: 1, scale: bubbleScale, y: bubbleY, duration: 0.4 }, 0)
-               .to(bubble, { opacity: 0, scale: 0.5, duration: 0.4, delay: 10 }); 
+        const clickTL = gsap.timeline({
+            onComplete: () => { isAnimating = false; }
+        });
+
+        clickTL
+            .to(antenna, { fill: "#60a5fa", duration: 0.1, repeat: 5, yoyo: true })
+            .to(svg, { 
+                rotation: "+=360", 
+                transformOrigin: "center center", 
+                duration: 0.8, 
+                ease: "back.inOut" 
+            }, 0)
+            .to(bubble, { opacity: 1, scale: 1, duration: 0.3 }, 0)
+            .to(bubble, { opacity: 0, scale: 0.5, duration: 0.4, delay: 6 });
     });
 
     window.addEventListener('mousemove', (e) => {
@@ -102,7 +159,12 @@
         const botX = rect.left + rect.width / 2;
         const botY = rect.top + rect.height / 2;
         const angle = Math.atan2(e.clientY - botY, e.clientX - botX);
-        const pupilDist = 5;
-        gsap.to([leftPupil, rightPupil], { x: Math.cos(angle) * pupilDist, y: Math.sin(angle) * pupilDist, duration: 0.8, ease: "power2.out" });
+        const pupilDist = 3.5;
+        gsap.to([leftPupil, rightPupil], { 
+            x: Math.cos(angle) * pupilDist, 
+            y: Math.sin(angle) * pupilDist, 
+            duration: 0.3, 
+            ease: "power1.out" 
+        });
     });
 </script>

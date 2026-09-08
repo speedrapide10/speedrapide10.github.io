@@ -1,0 +1,58 @@
+---
+import { projects } from '../../data/projects';
+import { Code2, Shield, Lock, Server, ExternalLink, RefreshCw } from 'lucide-react';
+
+const iconMap: Record<string, any> = {
+  Code2,
+  Shield,
+  Lock,
+  Server
+};
+
+const accentMap: Record<string, string> = {
+  'ansible-fleet': 'bg-blue-500',
+  'cloudflare-iac': 'bg-orange-500',
+  'opnsense-virtual': 'bg-emerald-500',
+  'portainer-forgejo-dr': 'bg-purple-500'
+};
+---
+
+<section id="projects" class="pt-8 pb-16 md:pt-10 md:pb-32 border-t border-zinc-500/20 dark:border-white/10 reveal-content scroll-mt-28 md:scroll-mt-32">
+    <h2 class="text-xs md:text-sm font-bold tracking-[0.4em] md:tracking-[0.6em] uppercase opacity-60 mb-8 md:mb-16 italic visible-primary">/ Featured_Projects</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 pb-6 md:pb-10">
+        {projects.map((proj) => {
+            const IconComponent = iconMap[proj.icon];
+            const accentColor = accentMap[proj.id] || 'bg-blue-500';
+            return (
+                <div class="group relative overflow-hidden p-5 sm:p-6 md:p-8 glass-card rounded-2xl md:rounded-[2.5rem] flex flex-col justify-between">
+                    <div class={`absolute top-0 left-0 right-0 h-1 ${accentColor}`}></div>
+                    <div>
+                        <div class="flex justify-between items-start mb-4 md:mb-8">
+                            <div class={`p-3 md:p-4 rounded-xl ${proj.color}`}>
+                                {IconComponent && <IconComponent class="w-5 h-5 md:w-8 md:h-8" />}
+                            </div>
+                            <ExternalLink size={18} class="opacity-20 group-hover:opacity-100 transition-opacity" />
+                        </div>
+                        <h3 class="text-lg md:text-2xl font-bold uppercase tracking-tight mb-3 md:mb-4 visible-primary transition-all">{proj.title}</h3>
+                        <p class="text-sm md:text-lg visible-secondary leading-relaxed mb-5 md:mb-8">{proj.description}</p>
+                    </div>
+                    <div class="flex gap-2 flex-wrap">
+                        {proj.tags.map((tag) => (
+                            <span class="px-2.5 py-1 bg-zinc-200 dark:bg-zinc-800 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest">{tag}</span>
+                        ))}
+                    </div>
+                </div>
+            );
+        })}
+
+        <div class="group relative overflow-hidden p-5 sm:p-6 md:p-8 glass-card border-dashed animate-learning-pulse rounded-2xl md:rounded-[2.5rem] flex flex-col justify-center text-center">
+            <div class="flex flex-col items-center">
+                <RefreshCw size={28} md:size={40} class="text-blue-500 mb-3 md:mb-4 animate-spin-slow" />
+                <h3 class="text-lg md:text-2xl font-bold uppercase tracking-tight mb-2 visible-primary">Learning New Tech</h3>
+                <p class="text-sm md:text-lg visible-secondary italic leading-relaxed">
+                    "Currently exploring Kubernetes orchestration, Advanced CI/CD patterns, and Go-based system tools. Always evolving."
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
