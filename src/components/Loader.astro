@@ -1,0 +1,44 @@
+---
+import { Terminal } from 'lucide-react';
+---
+
+<div id="page-loader" class="fixed inset-0 z-[200] bg-zinc-950 flex flex-col items-center justify-center font-mono text-xs sm:text-sm text-zinc-200 select-none">
+    <div class="flex items-center gap-2 mb-4 text-blue-400 font-bold">
+        <Terminal class="w-5 h-5 animate-pulse" />
+        <span class="tracking-widest uppercase">sysops@karem-node01:~# boot</span>
+    </div>
+    
+    <div class="w-48 sm:w-64 h-1.5 bg-zinc-800 rounded-full overflow-hidden mb-3 border border-zinc-700/50">
+        <div id="loader-progress" class="h-full bg-blue-500 w-0"></div>
+    </div>
+
+    <p id="loader-status" class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider">
+        [OK] Initializing Core Stack...
+    </p>
+</div>
+
+<script>
+    import gsap from 'gsap';
+
+    const progress = document.getElementById('loader-progress');
+    const status = document.getElementById('loader-status');
+    const loader = document.getElementById('page-loader');
+
+    if (loader && progress && status) {
+        document.body.style.overflow = 'hidden';
+
+        const tl = gsap.timeline({
+            onComplete: () => {
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        tl.to(progress, { width: '45%', duration: 0.5, ease: 'power1.inOut' })
+          .add(() => { if (status) status.innerText = '[OK] Mounting Virtualization Nodes...'; })
+          .to(progress, { width: '85%', duration: 0.5, ease: 'power1.inOut' })
+          .add(() => { if (status) status.innerText = '[OK] Establishing Edge Security...'; })
+          .to(progress, { width: '100%', duration: 0.4, ease: 'power1.inOut' })
+          .add(() => { if (status) status.innerText = '[OK] System Operational.'; })
+          .to(loader, { autoAlpha: 0, duration: 0.4, ease: 'power2.inOut', delay: 0.2 });
+    }
+</script>
