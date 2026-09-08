@@ -31,13 +31,14 @@ import Connect from '../components/sections/Connect.astro';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
     gsap.registerPlugin(ScrollTrigger);
 
+    // Synchronized with Loader completion (~2.0s)
     gsap.fromTo(".hero-name-1", 
         { y: 80, autoAlpha: 0 }, 
-        { y: 0, autoAlpha: 1, duration: 0.8, ease: "power4.out", delay: 2.8 }
+        { y: 0, autoAlpha: 1, duration: 0.8, ease: "power4.out", delay: 2.0 }
     );
     gsap.fromTo(".hero-name-2", 
         { y: 80, autoAlpha: 0 }, 
-        { y: 0, autoAlpha: 1, duration: 0.8, ease: "power4.out", delay: 3.0 }
+        { y: 0, autoAlpha: 1, duration: 0.8, ease: "power4.out", delay: 2.2 }
     );
 
     gsap.from(".reveal-content", { 
