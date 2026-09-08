@@ -1,57 +1,60 @@
 ---
-/** * THEME SWITCHER & MOBILE MENU ICONS */
 import { Sun, Moon, Monitor, FileText, Menu, X } from 'lucide-react';
 
-/* ==========================================================
-   RESUME CONFIGURATION
-   ========================================================== */
-const RESUME_PATH = "#"; 
+const RESUME_PATH = "/cv.pdf"; 
 const LINKEDIN_URL = "https://linkedin.com/in/oussama-karem";
-const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
+const CV_LINK = RESUME_PATH ? RESUME_PATH : LINKEDIN_URL;
 ---
+
 <header class="fixed top-0 left-0 w-full z-[100] border-b border-zinc-500/20 bg-background/90 backdrop-blur-md">
-    <nav class="max-w-screen-2xl mx-auto px-6 md:px-16 py-4 md:py-6 flex justify-between items-center">
-        <a href="#" class="font-bold tracking-tighter text-lg md:text-2xl uppercase hover:text-blue-500 transition-colors">O.KAREM</a>
+    <nav class="max-w-screen-2xl mx-auto px-4 lg:px-8 xl:px-16 py-2.5 lg:py-3 xl:py-5 flex justify-between items-center">
+        <a href="#" id="brand-logo" class="font-bold tracking-tighter text-base lg:text-lg xl:text-2xl uppercase hover:text-blue-500 transition-colors shrink-0 z-[110]">O.KAREM</a>
         
-        <div class="flex items-center gap-3 md:gap-6">
-            <ul class="hidden lg:flex gap-10 font-mono text-sm uppercase tracking-widest mr-4">
-                <li><a href="#about" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-1">About</a></li>
-                <li><a href="#certifications" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-1">Certifications</a></li>
-                <li><a href="#arsenal" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-1">Skills</a></li>
-                <li><a href="#projects" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-1">Projects</a></li>
-                <li><a href="#connect" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-1">Connect</a></li>
+        <div class="flex items-center gap-2 lg:gap-4 xl:gap-6">
+            <!-- DESKTOP NAVIGATION -->
+            <ul class="hidden lg:flex gap-3.5 xl:gap-8 font-mono text-xs xl:text-sm uppercase tracking-wider xl:tracking-widest mr-2">
+                <li><a href="#about" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-0.5">About</a></li>
+                <li><a href="#certifications" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-0.5">Certifications</a></li>
+                <li><a href="#arsenal" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-0.5">Skills</a></li>
+                <li><a href="#projects" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-0.5">Projects</a></li>
+                <li><a href="#infrastructure" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-0.5">Infra</a></li>
+                <li><a href="#connect" class="text-foreground border-b-2 border-blue-500/50 hover:border-blue-500 transition-all pb-0.5">Connect</a></li>
             </ul>
 
-            <div class="flex items-center gap-1 p-1 bg-zinc-500/10 rounded-full border border-zinc-500/20" id="theme-switcher">
-                <button data-theme="light" class="p-2 md:p-2.5 rounded-full transition-all hover:bg-zinc-500/20 text-zinc-500 aria-pressed:bg-blue-500 aria-pressed:text-white" aria-label="Light Mode">
-                    <Sun size={14} />
+            <!-- THEME SWITCHER -->
+            <div class="flex items-center gap-0.5 sm:gap-1 p-1 bg-zinc-500/10 rounded-full border border-zinc-500/20 shrink-0 z-[110]" id="theme-switcher">
+                <button data-theme="light" class="p-1.5 lg:p-2 rounded-full transition-all hover:bg-zinc-500/20 text-zinc-500 aria-pressed:bg-blue-500 aria-pressed:text-white" aria-label="Light Mode">
+                    <Sun class="w-3.5 h-3.5 lg:w-3.5 lg:h-3.5" />
                 </button>
-                <button data-theme="system" class="p-2 md:p-2.5 rounded-full transition-all hover:bg-zinc-500/20 text-zinc-500 aria-pressed:bg-blue-500 aria-pressed:text-white" aria-label="System Mode">
-                    <Monitor size={14} />
+                <button data-theme="system" class="hidden sm:block p-1.5 lg:p-2 rounded-full transition-all hover:bg-zinc-500/20 text-zinc-500 aria-pressed:bg-blue-500 aria-pressed:text-white" aria-label="System Mode">
+                    <Monitor class="w-3.5 h-3.5 lg:w-3.5 lg:h-3.5" />
                 </button>
-                <button data-theme="dark" class="p-2 md:p-2.5 rounded-full transition-all hover:bg-zinc-500/20 text-zinc-500 aria-pressed:bg-blue-500 aria-pressed:text-white" aria-label="Dark Mode">
-                    <Moon size={14} />
+                <button data-theme="dark" class="p-1.5 lg:p-2 rounded-full transition-all hover:bg-zinc-500/20 text-zinc-500 aria-pressed:bg-blue-500 aria-pressed:text-white" aria-label="Dark Mode">
+                    <Moon class="w-3.5 h-3.5 lg:w-3.5 lg:h-3.5" />
                 </button>
             </div>
 
-            <button id="mobile-menu-toggle" class="lg:hidden p-3 text-white bg-blue-600 border-2 border-blue-400/30 rounded-full transition-all z-[110] shadow-lg active:scale-90" aria-label="Toggle Menu">
-                <span id="menu-icon-open"><Menu size={22} strokeWidth={3} /></span>
-                <span id="menu-icon-close" class="hidden"><X size={22} strokeWidth={3} /></span>
+            <!-- MOBILE MENU TOGGLE -->
+            <button id="mobile-menu-toggle" class="lg:hidden p-2 text-white bg-blue-600 border-2 border-blue-400/30 rounded-full transition-all z-[110] shadow-lg active:scale-90" aria-label="Toggle Menu">
+                <span id="menu-icon-open"><Menu size={18} strokeWidth={2.5} /></span>
+                <span id="menu-icon-close" class="hidden"><X size={18} strokeWidth={2.5} /></span>
             </button>
         </div>
     </nav>
 </header>
 
+<!-- MOBILE MENU OVERLAY -->
 <div id="mobile-menu-overlay" class="fixed inset-0 z-[90] bg-zinc-950/98 backdrop-blur-3xl flex flex-col items-center justify-center invisible opacity-0 lg:hidden">
-    <ul class="flex flex-col gap-10 font-mono text-2xl uppercase tracking-[0.2em] text-center">
+    <ul class="flex flex-col gap-6 sm:gap-8 font-mono text-xl sm:text-2xl uppercase tracking-[0.2em] text-center">
         <li><a href="#about" class="mobile-nav-link text-white font-black hover:text-blue-500 transition-all">About</a></li>
         <li><a href="#certifications" class="mobile-nav-link text-white font-black hover:text-blue-500 transition-all">Certifications</a></li>
         <li><a href="#arsenal" class="mobile-nav-link text-white font-black hover:text-blue-500 transition-all">Skills</a></li>
         <li><a href="#projects" class="mobile-nav-link text-white font-black hover:text-blue-500 transition-all">Projects</a></li>
+        <li><a href="#infrastructure" class="mobile-nav-link text-white font-black hover:text-blue-500 transition-all">Infra</a></li>
         <li><a href="#connect" class="mobile-nav-link text-white font-black hover:text-blue-500 transition-all">Connect</a></li>
-        <li class="mt-8 px-10 w-full">
-            <a href={CV_LINK} target="_blank" class="mobile-nav-link flex justify-center items-center gap-3 px-8 py-4 bg-blue-600 text-white text-base font-bold uppercase tracking-widest rounded-full shadow-2xl">
-                <FileText size={20} /> Resume
+        <li class="mt-4 px-10 w-full">
+            <a href={CV_LINK} target="_blank" class="mobile-nav-link flex justify-center items-center gap-3 px-8 py-3.5 bg-blue-600 text-white text-sm font-bold uppercase tracking-widest rounded-full shadow-2xl">
+                <FileText size={18} /> Resume
             </a>
         </li>
     </ul>
@@ -60,7 +63,6 @@ const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
 <script>
     import gsap from 'gsap';
 
-    // 1. THEME SWITCHER
     const themeButtons = document.querySelectorAll('#theme-switcher button');
     const applyTheme = (theme) => {
         const root = document.documentElement;
@@ -74,12 +76,12 @@ const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
     applyTheme(savedTheme);
     themeButtons.forEach(btn => btn.addEventListener('click', () => applyTheme(btn.getAttribute('data-theme'))));
 
-    // 2. MOBILE MENU LOGIC
     const toggleBtn = document.getElementById('mobile-menu-toggle');
     const overlay = document.getElementById('mobile-menu-overlay');
     const openIcon = document.getElementById('menu-icon-open');
     const closeIcon = document.getElementById('menu-icon-close');
     const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    const brandLogo = document.getElementById('brand-logo');
 
     let isOpen = false;
     gsap.set(overlay, { xPercent: 100 });
@@ -87,19 +89,22 @@ const CV_LINK = RESUME_PATH === "#" ? LINKEDIN_URL : RESUME_PATH;
     const toggleMenu = () => {
         isOpen = !isOpen;
         if (isOpen) {
-            gsap.to(overlay, { xPercent: 0, autoAlpha: 1, duration: 0.5, ease: "power4.out" });
-            gsap.fromTo(".mobile-nav-link", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, delay: 0.2 });
-            openIcon.classList.add('hidden');
-            closeIcon.classList.remove('hidden');
+            gsap.to(overlay, { xPercent: 0, autoAlpha: 1, duration: 0.4, ease: "power4.out" });
+            gsap.fromTo(".mobile-nav-link", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.08, delay: 0.15 });
+            openIcon?.classList.add('hidden');
+            closeIcon?.classList.remove('hidden');
+            brandLogo?.classList.add('text-white');
             document.body.style.overflow = 'hidden'; 
         } else {
-            gsap.to(overlay, { xPercent: 100, autoAlpha: 0, duration: 0.4, ease: "power4.in" });
-            openIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
+            gsap.to(overlay, { xPercent: 100, autoAlpha: 0, duration: 0.3, ease: "power4.in" });
+            openIcon?.classList.remove('hidden');
+            closeIcon?.classList.add('hidden');
+            brandLogo?.classList.remove('text-white');
             document.body.style.overflow = 'auto'; 
         }
     };
 
     toggleBtn?.addEventListener('click', toggleMenu);
     mobileLinks.forEach(link => link.addEventListener('click', () => { if (isOpen) toggleMenu(); }));
+    brandLogo?.addEventListener('click', () => { if (isOpen) toggleMenu(); });
 </script>

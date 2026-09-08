@@ -1,0 +1,123 @@
+---
+import { Github, Workflow, Box, Cloud, Server, ArrowRight } from 'lucide-react';
+---
+
+<section id="infrastructure" class="pt-8 pb-16 md:pt-10 md:pb-32 border-t border-slate-300/40 dark:border-slate-800 reveal-content scroll-mt-28 md:scroll-mt-32">
+    <h2 class="text-[10px] sm:text-xs md:text-sm font-mono font-extrabold tracking-[0.3em] uppercase text-blue-700 dark:text-sky-400 mb-6 md:mb-12 italic break-words max-w-full">
+        / Hosting_Infrastructure_&_Pipeline
+    </h2>
+    
+    <div class="glass-card rounded-2xl md:rounded-[2.5rem] p-4 sm:p-8 md:p-10 relative overflow-hidden space-y-8 md:space-y-10">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 dark:from-sky-400 dark:via-purple-400 dark:to-emerald-400"></div>
+
+        <!-- Header Row -->
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 pb-6 border-b border-slate-300 dark:border-slate-800">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-600/30 dark:border-emerald-500/30 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse"></span>
+                    <span class="text-[10px] md:text-xs font-mono font-bold text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Production Architecture • Edge Hosting</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl md:text-4xl font-black uppercase tracking-tight text-slate-900 dark:text-slate-100">Portfolio Hosting Stack</h3>
+                <p class="text-xs sm:text-sm md:text-base text-slate-700 dark:text-slate-200 max-w-2xl mt-2 leading-relaxed font-medium">
+                    Automated with modern GitOps workflows, tested inside Docker containers, protected at the edge by Cloudflare, and backed by extensive experience in <strong>Self-Hosting</strong>, <strong>Disaster Recovery</strong>, and <strong>Automated Observability</strong>.
+                </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-blue-500/10 dark:bg-sky-400/10 border border-blue-600/25 dark:border-sky-400/30 max-w-full lg:max-w-sm space-y-1.5 w-full lg:w-auto">
+                <div class="flex items-center gap-2 text-blue-800 dark:text-sky-300 font-bold text-xs md:text-sm uppercase tracking-wider">
+                    <Server class="w-4 h-4 shrink-0 text-blue-800 dark:text-sky-300" /> Self-Hosting & DR Automation
+                </div>
+                <p class="text-xs text-slate-700 dark:text-slate-200 leading-normal font-medium">
+                    Orchestrating Proxmox/oVirt clusters, Portainer stacks, self-hosted Forgejo Git, zero-touch disaster recovery scripts, and embedded Mattermost webhook notifications.
+                </p>
+            </div>
+        </div>
+
+        <!-- Pipeline Flow -->
+        <div class="space-y-4">
+            <p class="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest text-blue-800 dark:text-sky-400">/ Automated_CI-CD_Deployment_Flow</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+                <!-- Node 1 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-slate-200/60 dark:bg-slate-800/80 border border-slate-300/80 dark:border-slate-700 flex flex-col items-center text-center space-y-3 relative group hover:border-sky-400 transition-all">
+                    <div class="p-3 bg-slate-300/60 dark:bg-slate-700/80 rounded-lg text-slate-800 dark:text-white">
+                        <Github class="w-6 h-6 md:w-7 md:h-7" />
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-mono text-blue-800 dark:text-sky-400 font-bold uppercase">01. Version Control</span>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100 uppercase mt-0.5">GitHub & Forgejo</h4>
+                        <p class="text-[11px] text-slate-700 dark:text-slate-300 mt-1">GitOps source code & self-hosted VCS backup</p>
+                    </div>
+                    <div class="hidden lg:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 p-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-blue-700 dark:text-sky-400 shadow-xs">
+                        <ArrowRight class="w-3.5 h-3.5" />
+                    </div>
+                </div>
+
+                <!-- Node 2 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-slate-200/60 dark:bg-slate-800/80 border border-slate-300/80 dark:border-slate-700 flex flex-col items-center text-center space-y-3 relative group hover:border-sky-400 transition-all">
+                    <div class="p-3 bg-sky-500/15 rounded-lg text-sky-800 dark:text-sky-300">
+                        <Workflow class="w-6 h-6 md:w-7 md:h-7" />
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-mono text-blue-800 dark:text-sky-400 font-bold uppercase">02. Automation</span>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100 uppercase mt-0.5">GitHub Actions</h4>
+                        <p class="text-[11px] text-slate-700 dark:text-slate-300 mt-1">Automated linting, Astro build & test verification</p>
+                    </div>
+                    <div class="hidden lg:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 p-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-cyan-700 dark:text-cyan-400 shadow-xs">
+                        <ArrowRight class="w-3.5 h-3.5" />
+                    </div>
+                </div>
+
+                <!-- Node 3 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-slate-200/60 dark:bg-slate-800/80 border border-slate-300/80 dark:border-slate-700 flex flex-col items-center text-center space-y-3 relative group hover:border-cyan-400 transition-all">
+                    <div class="p-3 bg-cyan-500/15 rounded-lg text-cyan-800 dark:text-cyan-300">
+                        <Box class="w-6 h-6 md:w-7 md:h-7" />
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-mono text-cyan-800 dark:text-cyan-400 font-bold uppercase">03. Containerization</span>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100 uppercase mt-0.5">Docker Container</h4>
+                        <p class="text-[11px] text-slate-700 dark:text-slate-300 mt-1">Portainer managed multi-stage Nginx build</p>
+                    </div>
+                    <div class="hidden lg:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 p-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-orange-700 dark:text-orange-400 shadow-xs">
+                        <ArrowRight class="w-3.5 h-3.5" />
+                    </div>
+                </div>
+
+                <!-- Node 4 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-slate-200/60 dark:bg-slate-800/80 border border-slate-300/80 dark:border-slate-700 flex flex-col items-center text-center space-y-3 relative group hover:border-orange-400 transition-all">
+                    <div class="p-3 bg-orange-500/15 rounded-lg text-orange-800 dark:text-orange-300">
+                        <Cloud class="w-6 h-6 md:w-7 md:h-7" />
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-mono text-orange-800 dark:text-orange-400 font-bold uppercase">04. Edge Hosting</span>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100 uppercase mt-0.5">Cloudflare Pages</h4>
+                        <p class="text-[11px] text-slate-700 dark:text-slate-300 mt-1">Global Edge CDN, TLS 1.3 & WAF Protection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Telemetry Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 pt-4 border-t border-slate-300 dark:border-slate-800">
+            <div class="p-3.5 md:p-4 rounded-xl bg-slate-200/50 dark:bg-slate-800/60 border border-slate-300/80 dark:border-slate-700 text-center">
+                <span class="text-[9px] md:text-[10px] font-mono text-slate-700 dark:text-slate-300 uppercase tracking-wider block font-bold">Disaster Recovery</span>
+                <span class="text-xs md:text-sm font-bold text-purple-800 dark:text-purple-300 mt-0.5 block">Forgejo Git Backups</span>
+            </div>
+
+            <div class="p-3.5 md:p-4 rounded-xl bg-slate-200/50 dark:bg-slate-800/60 border border-slate-300/80 dark:border-slate-700 text-center">
+                <span class="text-[9px] md:text-[10px] font-mono text-slate-700 dark:text-slate-300 uppercase tracking-wider block font-bold">Observability</span>
+                <span class="text-xs md:text-sm font-bold text-blue-800 dark:text-sky-300 mt-0.5 block">Mattermost Alerts</span>
+            </div>
+
+            <div class="p-3.5 md:p-4 rounded-xl bg-slate-200/50 dark:bg-slate-800/60 border border-slate-300/80 dark:border-slate-700 text-center">
+                <span class="text-[9px] md:text-[10px] font-mono text-slate-700 dark:text-slate-300 uppercase tracking-wider block font-bold">Edge Security</span>
+                <span class="text-xs md:text-sm font-bold text-amber-800 dark:text-amber-300 mt-0.5 block">Cloudflare WAF</span>
+            </div>
+
+            <div class="p-3.5 md:p-4 rounded-xl bg-slate-200/50 dark:bg-slate-800/60 border border-slate-300/80 dark:border-slate-700 text-center">
+                <span class="text-[9px] md:text-[10px] font-mono text-slate-700 dark:text-slate-300 uppercase tracking-wider block font-bold">Infrastructure SLA</span>
+                <span class="text-xs md:text-sm font-bold text-emerald-800 dark:text-emerald-300 mt-0.5 block">99.99% Availability</span>
+            </div>
+        </div>
+    </div>
+</section>
