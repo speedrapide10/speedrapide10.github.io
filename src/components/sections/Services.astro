@@ -1,0 +1,77 @@
+---
+import { Cpu, ShieldCheck, Workflow, Server, Clock, CheckCircle } from 'lucide-react';
+
+const services = [
+  {
+    title: 'Self-Hosted Infra & Virtualization',
+    desc: 'Setting up high-availability Proxmox/oVirt clusters, Docker stacks, and Portainer management for zero-friction self-hosting.',
+    icon: Server,
+    color: 'text-blue-700 dark:text-sky-400',
+    borderColor: 'hover:border-sky-400'
+  },
+  {
+    title: 'CI/CD & GitOps Pipeline Setup',
+    desc: 'Building automated GitHub Actions / Forgejo CI/CD workflows, automated build testing, and multi-environment container deployments.',
+    icon: Workflow,
+    color: 'text-purple-700 dark:text-purple-300',
+    borderColor: 'hover:border-purple-400'
+  },
+  {
+    title: 'Linux OS & Fleet Hardening',
+    desc: 'Auditing RHEL/Debian environments, deploying idempotent Ansible security playbooks, SSH hardening, and SSL/TLS lifecycle configuration.',
+    icon: ShieldCheck,
+    color: 'text-emerald-700 dark:text-emerald-300',
+    borderColor: 'hover:border-emerald-400'
+  },
+  {
+    title: 'Disaster Recovery & Observability',
+    desc: 'Designing automated backup/restore routines with self-hosted Git and embedding Mattermost webhook alerts for instant anomaly visibility.',
+    icon: Cpu,
+    color: 'text-amber-700 dark:text-amber-300',
+    borderColor: 'hover:border-amber-400'
+  }
+];
+---
+
+<section id="services" class="pt-8 pb-16 md:pt-10 md:pb-32 border-t border-slate-300/40 dark:border-slate-800 reveal-content scroll-mt-28 md:scroll-mt-32">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 md:mb-16">
+        <div>
+            <h2 class="text-xs md:text-sm font-mono font-extrabold tracking-[0.3em] uppercase text-blue-700 dark:text-sky-400 italic">
+                / Freelance_&_Consulting_Services
+            </h2>
+            <h3 class="text-2xl md:text-4xl font-black uppercase tracking-tight text-slate-900 dark:text-slate-100 mt-1">
+                Solutions I Deliver
+            </h3>
+        </div>
+        
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30">
+            <Clock class="w-4 h-4 text-purple-700 dark:text-purple-300 animate-spin-slow" />
+            <span class="text-xs font-mono font-bold text-purple-700 dark:text-purple-300 uppercase">
+                Open for Contract & Freelance Projects
+            </span>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {services.map((srv) => {
+            const IconComp = srv.icon;
+            return (
+                <div class={`glass-card p-6 md:p-8 rounded-2xl md:rounded-3xl transition-all ${srv.borderColor} space-y-4`}>
+                    <div class="flex items-center justify-between">
+                        <div class={`p-3 rounded-xl bg-slate-200/80 dark:bg-slate-800/90 ${srv.color}`}>
+                            <IconComp size={24} />
+                        </div>
+                        <span class="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-sky-500/15 text-sky-800 dark:text-sky-300 border border-sky-500/30 font-bold">
+                            Freelance Ready
+                        </span>
+                    </div>
+                    <h4 class="text-lg md:text-xl font-bold uppercase tracking-tight text-slate-900 dark:text-slate-100">{srv.title}</h4>
+                    <p class="text-sm text-slate-700 dark:text-slate-200 leading-relaxed font-medium">{srv.desc}</p>
+                    <div class="pt-2 flex items-center gap-2 text-xs font-bold text-blue-700 dark:text-sky-400">
+                        <CheckCircle size={14} /> Production-Grade Guarantee
+                    </div>
+                </div>
+            );
+        })}
+    </div>
+</section>

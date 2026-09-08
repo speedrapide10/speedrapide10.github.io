@@ -7,6 +7,7 @@ import Certifications from '../components/sections/Certifications.astro';
 import Arsenal from '../components/sections/Arsenal.astro';
 import Projects from '../components/sections/Projects.astro';
 import Infrastructure from '../components/sections/Infrastructure.astro';
+import Services from '../components/sections/Services.astro';
 import Connect from '../components/sections/Connect.astro';
 ---
 
@@ -20,6 +21,7 @@ import Connect from '../components/sections/Connect.astro';
         <Arsenal />
         <Projects />
         <Infrastructure />
+        <Services />
         <Connect />
     </main>
 </Layout>
@@ -35,7 +37,7 @@ import Connect from '../components/sections/Connect.astro';
     );
     gsap.fromTo(".hero-name-2", 
         { y: 80, autoAlpha: 0 }, 
-        { y: 0, autoAlpha: 0.5, duration: 0.8, ease: "power4.out", delay: 3.0 }
+        { y: 0, autoAlpha: 1, duration: 0.8, ease: "power4.out", delay: 3.0 }
     );
 
     gsap.from(".reveal-content", { 
