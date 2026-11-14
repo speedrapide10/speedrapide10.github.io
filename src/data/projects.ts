@@ -5,6 +5,7 @@ export interface Project {
   tags: string[];
   icon: string;
   color: string;
+  link?: string;
 }
 
 export const projects: Project[] = [
@@ -14,7 +15,8 @@ export const projects: Project[] = [
     description: 'Automating the deployment of critical security patches and OS hardening policies across mixed RHEL and Debian environments using idempotent playbooks.',
     tags: ['Ansible', 'Security', 'RHEL'],
     icon: 'Code2',
-    color: 'bg-blue-500/10 text-blue-500'
+    color: 'bg-blue-500/10 text-blue-500',
+    link: 'https://github.com/speedrapide10/Proxmox-Public-Scripts'
   },
   {
     id: 'cloudflare-iac',
@@ -22,7 +24,8 @@ export const projects: Project[] = [
     description: 'Managing global edge security using Terraform to automate Cloudflare WAF rules, DNS zones, and Zero Trust access policies with version-controlled safety.',
     tags: ['Terraform', 'Cloudflare', 'IaC'],
     icon: 'Shield',
-    color: 'bg-orange-500/10 text-orange-500'
+    color: 'bg-orange-500/10 text-orange-500',
+    link: 'https://github.com/speedrapide10/docker-cloudflare-ddns'
   },
   {
     id: 'opnsense-virtual',
@@ -38,6 +41,7 @@ export const projects: Project[] = [
     description: 'Zero-touch backup, stack management, and disaster recovery scripts for Portainer version-controlled via self-hosted Forgejo Git, with embedded Mattermost notification webhooks in every script for real-time observability.',
     tags: ['Portainer', 'Forgejo', 'Mattermost', 'DR'],
     icon: 'Server',
-    color: 'bg-purple-500/10 text-purple-500'
+    color: 'bg-purple-500/10 text-purple-500',
+    link: 'https://github.com/speedrapide10/portainer-stacks-backup'
   }
 ];

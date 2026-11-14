@@ -33,7 +33,13 @@ const accentMap: Record<string, string> = {
                             <div class={`p-3 md:p-4 rounded-xl ${proj.color}`}>
                                 {IconComponent && <IconComponent class="w-5 h-5 md:w-8 md:h-8" />}
                             </div>
-                            <ExternalLink size={18} class="opacity-60 group-hover:opacity-100 transition-opacity text-slate-700 dark:text-slate-300" />
+                            {proj.link ? (
+                                <a href={proj.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${proj.title} on GitHub`}>
+                                    <ExternalLink size={18} class="opacity-60 group-hover:opacity-100 hover:text-blue-500 transition-all text-slate-700 dark:text-slate-300" />
+                                </a>
+                            ) : (
+                                <ExternalLink size={18} class="opacity-60 group-hover:opacity-100 transition-opacity text-slate-700 dark:text-slate-300" />
+                            )}
                         </div>
                         <h3 class="text-lg md:text-2xl font-bold uppercase tracking-tight mb-3 md:mb-4 text-slate-900 dark:text-slate-100 transition-all">{proj.title}</h3>
                         <p class="text-sm md:text-base text-slate-700 dark:text-slate-200 leading-relaxed mb-5 md:mb-8 font-medium">{proj.description}</p>
