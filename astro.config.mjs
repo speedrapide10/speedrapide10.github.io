@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
 
 export default defineConfig({
-  site: 'https://speedrapide10.github.io',
+  site: 'https://oussama.speednight.win',
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()]
