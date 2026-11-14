@@ -1,44 +1,47 @@
 ---
-import { Terminal as TerminalIcon, Play, RefreshCw, CheckCircle2 } from 'lucide-react';
+import { Terminal as TerminalIcon, Play, RefreshCw, CheckCircle2, Server, Mail } from 'lucide-react';
 ---
 
 <div class="rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden font-mono text-xs md:text-sm shadow-2xl my-8 text-zinc-200">
     <!-- Terminal Titlebar -->
-    <div class="bg-zinc-900/90 px-4 py-3 flex items-center justify-between border-b border-zinc-800">
+    <div class="bg-zinc-900/90 px-4 py-3 flex items-center justify-between border-b border-zinc-800 select-none">
         <div class="flex items-center gap-2">
             <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
             <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
             <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
             <span class="ml-2 text-[11px] font-bold text-zinc-400 flex items-center gap-1.5">
-                <TerminalIcon size={14} class="text-blue-400" /> sysops@karem-node01:~
+                <TerminalIcon size={14} class="text-sky-400" /> sysops@karem-node01:~
             </span>
         </div>
-        <span class="text-[10px] text-zinc-500 uppercase tracking-widest hidden sm:inline-block">Interactive Shell</span>
+        <span class="text-[10px] text-zinc-500 uppercase tracking-widest hidden sm:inline-block">Interactive Shell • Tab to complete</span>
     </div>
 
     <!-- Terminal Body -->
-    <div class="p-4 sm:p-6 bg-zinc-950 text-zinc-200 min-h-[180px] max-h-[260px] overflow-y-auto space-y-3" id="terminal-body">
-        <p class="text-zinc-400">Type <span class="text-blue-400 font-bold">'help'</span> to see available commands or click quick actions below.</p>
-        <div id="terminal-history" class="space-y-2"></div>
+    <div class="p-4 sm:p-6 bg-zinc-950 text-zinc-200 min-h-[200px] max-h-[300px] overflow-y-auto space-y-3 cursor-text" id="terminal-body">
+        <p class="text-zinc-400">Type <span class="text-sky-400 font-bold">'help'</span> to see commands or click quick actions below. Supports <span class="text-zinc-200 font-bold">Tab</span> & <span class="text-zinc-200 font-bold">↑/↓</span> history.</p>
+        <div id="terminal-history" class="space-y-2.5"></div>
         
         <form id="terminal-form" class="flex items-center gap-2 pt-1">
-            <span class="text-emerald-400 font-bold">sysops@karem:~$</span>
-            <input type="text" id="terminal-input" class="bg-transparent border-none outline-none text-blue-400 font-bold flex-1 caret-blue-400" focus autocomplete="off" placeholder="type command..." />
+            <span class="text-emerald-400 font-bold shrink-0">sysops@karem:~$</span>
+            <input type="text" id="terminal-input" class="bg-transparent border-none outline-none text-sky-400 font-bold flex-1 caret-sky-400" focus autocomplete="off" placeholder="type command (e.g. status, homelab, ls)..." />
         </form>
     </div>
 
     <!-- Terminal Action Buttons -->
-    <div class="p-3 bg-zinc-900/80 border-t border-zinc-800 flex flex-wrap gap-2">
-        <button data-cmd="ansible-run" class="cmd-btn px-2.5 py-1 rounded bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 border border-blue-500/30 text-[11px] font-bold transition-all flex items-center gap-1 cursor-pointer">
+    <div class="p-3 bg-zinc-900/80 border-t border-zinc-800 flex flex-wrap gap-2 select-none">
+        <button data-cmd="ansible-run" class="cmd-btn px-2.5 py-1 rounded bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 border border-blue-500/30 text-[11px] font-bold transition-all flex items-center gap-1.5 cursor-pointer">
             <Play size={12} /> ansible-run
         </button>
-        <button data-cmd="homelab" class="cmd-btn px-2.5 py-1 rounded bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[11px] font-bold transition-all flex items-center gap-1 cursor-pointer">
-            <CheckCircle2 size={12} /> homelab
+        <button data-cmd="homelab" class="cmd-btn px-2.5 py-1 rounded bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[11px] font-bold transition-all flex items-center gap-1.5 cursor-pointer">
+            <Server size={12} /> homelab
         </button>
-        <button data-cmd="contact" class="cmd-btn px-2.5 py-1 rounded bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 border border-sky-500/30 text-[11px] font-bold transition-all flex items-center gap-1 cursor-pointer">
-            <TerminalIcon size={12} /> contact
+        <button data-cmd="status" class="cmd-btn px-2.5 py-1 rounded bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] font-bold transition-all flex items-center gap-1.5 cursor-pointer">
+            <CheckCircle2 size={12} /> status
         </button>
-        <button data-cmd="clear" class="cmd-btn px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 text-[11px] font-bold transition-all flex items-center gap-1 cursor-pointer">
+        <button data-cmd="contact" class="cmd-btn px-2.5 py-1 rounded bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 border border-sky-500/30 text-[11px] font-bold transition-all flex items-center gap-1.5 cursor-pointer">
+            <Mail size={12} /> contact
+        </button>
+        <button data-cmd="clear" class="cmd-btn px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 text-[11px] font-bold transition-all flex items-center gap-1.5 cursor-pointer ml-auto">
             <RefreshCw size={12} /> clear
         </button>
     </div>
@@ -48,41 +51,107 @@ import { Terminal as TerminalIcon, Play, RefreshCw, CheckCircle2 } from 'lucide-
     const form = document.getElementById('terminal-form');
     const input = document.getElementById('terminal-input') as HTMLInputElement;
     const history = document.getElementById('terminal-history');
+    const body = document.getElementById('terminal-body');
     const cmdBtns = document.querySelectorAll('.cmd-btn');
 
+    // Click anywhere in terminal body to focus
+    body?.addEventListener('click', () => {
+        input?.focus();
+    });
+
     const commands: Record<string, string> = {
-        'help': 'Available commands: <span class="text-blue-400 font-bold">status, certs, stack, homelab, contact, ansible-run, freelance, clear</span>',
-        'status': '<span class="text-emerald-400 font-bold">✓ Systems Operational</span> | Uptime: 99.99% | Edge Security: Active (Cloudflare WAF)',
-        'certs': 'Red Hat RHCSA | Fortinet NSE | Scrum SFC | EF SET B2 Upper Intermediate',
-        'stack': 'Linux (RHEL/Debian) | Ansible | Terraform | Proxmox | Docker | Portainer | Forgejo | Mattermost',
-        'homelab': '<span class="text-blue-400">[CLUSTER]</span> 3x Proxmox VE Nodes (Intel Core / 32GB RAM / 10G SDN) <br/><span class="text-emerald-400">[STORAGE]</span> ZFS Pools, PBS Offsite Deduplication, NVMe/SATA Tiering <br/><span class="text-purple-400">[NETWORK]</span> Dual-ring Corosync, Storage VLAN 3288, WireGuard/Tailscale Zero-Trust',
-        'contact': '<span class="text-blue-400">Direct Email:</span> <a href="mailto:karemoussama10+pro@gmail.com" class="text-sky-400 font-bold underline">karemoussama10+pro@gmail.com</a> | <span class="text-blue-400">LinkedIn:</span> <a href="https://linkedin.com/in/oussama-karem" target="_blank" class="text-sky-400 underline">in/oussama-karem</a>',
-        'freelance': '<span class="text-purple-400 font-bold">Services Offered:</span> Infrastructure Audits, CI/CD Pipeline Automation, OS Hardening & Zero-Touch DR.',
-        'ansible-run': '<span class="text-blue-400">[PLAYBOOK]</span> OS Hardening & Patching... <br/><span class="text-emerald-400">ok=12 changed=3 unreachable=0 failed=0</span>'
+        'help': 'Available commands: <span class="text-sky-400 font-bold">status, homelab, stack, certs, contact, ansible-run, whoami, uname, ls, uptime, clear</span>',
+        'status': '<span class="text-emerald-400 font-bold">✓ Systems Operational</span> | Uptime: 99.99% | Cloudflare Edge WAF: Active | SDN: 10G mesh',
+        'whoami': 'Oussama Karem — SysOps & Cloud Infrastructure Engineer (RHCSA, Fortinet NSE, Scrum SFC)',
+        'uname': 'Linux karem-node01 7.0.0-pve #1 SMP PREEMPT x86_64 GNU/Linux',
+        'uname -a': 'Linux karem-node01 7.0.0-pve #1 SMP PREEMPT x86_64 GNU/Linux',
+        'ls': '<span class="text-sky-400">certs/</span>  <span class="text-purple-400">homelab/</span>  <span class="text-amber-400">playbooks/</span>  <span class="text-emerald-400">cv.pdf</span>  <span class="text-zinc-300">README.md</span>',
+        'll': '-rw-r--r-- 1 sysops sysops 142K cv.pdf<br/>drwxr-xr-x 2 sysops sysops 4.0K certs/<br/>drwxr-xr-x 4 sysops sysops 4.0K homelab/<br/>drwxr-xr-x 3 sysops sysops 4.0K playbooks/',
+        'uptime': 'up 99.99%, 1 user, load average: 0.08, 0.12, 0.05',
+        'certs': '• Red Hat Certified System Administrator (RHCSA)<br/>• Fortinet Network Security Expert (NSE)<br/>• SCRUMstudy Certified (SFC)<br/>• EF SET English B2 Upper Intermediate',
+        'stack': 'Linux (RHEL/Debian) | Ansible | Terraform | Proxmox VE | Docker | Portainer | Forgejo | Mattermost | Tailscale',
+        'homelab': '<span class="text-sky-400 font-bold">[CLUSTER]</span> 3x Proxmox VE Nodes (Core i-series / 32GB RAM / 10G SDN)<br/><span class="text-emerald-400 font-bold">[STORAGE]</span> ZFS Pools, PBS Offsite Deduplication, NVMe/SATA Tiering<br/><span class="text-purple-400 font-bold">[NETWORK]</span> Dual-ring Corosync, Storage VLAN 3288, WireGuard/Tailscale Zero-Trust GitOps',
+        'contact': '<span class="text-sky-400 font-bold">Direct Email:</span> <a href="mailto:karemoussama10+pro@gmail.com" class="text-sky-300 underline font-bold">karemoussama10+pro@gmail.com</a><br/><span class="text-sky-400 font-bold">LinkedIn:</span> <a href="https://linkedin.com/in/oussama-karem" target="_blank" class="text-sky-300 underline">in/oussama-karem</a>',
+        'freelance': '<span class="text-purple-400 font-bold">Services Offered:</span> Cloud & Linux Infrastructure Audits, CI/CD Pipeline Automation, OS Hardening & Zero-Touch DR.',
+        'ansible-run': '<span class="text-zinc-500">PLAY [All Production Nodes] *************************************</span><br/><span class="text-emerald-400">TASK [Gathering Facts]</span> .................................... ok<br/><span class="text-yellow-400">TASK [Apply CIS Security & Kernel Sysctl]</span> ................ changed<br/><span class="text-emerald-400">TASK [Verify WireGuard & Zero-Trust Mesh]</span> ................. ok<br/><span class="text-zinc-500">PLAY RECAP ******************************************************</span><br/><span class="text-sky-300">karem-nodes</span> : <span class="text-emerald-400">ok=14</span> <span class="text-yellow-400">changed=3</span> <span class="text-zinc-500">unreachable=0 failed=0</span>',
+        'sudo': '<span class="text-yellow-400">[sudo] password for sysops:</span> Nice try! Permission denied: With great power comes great responsibility. 😉',
+        'exit': '<span class="text-zinc-500">Session kept alive. (Type "clear" to reset screen)</span>'
     };
 
+    // Command History Buffer
+    const historyBuffer: string[] = [];
+    let historyIdx = -1;
+
+    // Up/Down History & Tab Autocomplete
+    input?.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (historyIdx < historyBuffer.length - 1) {
+                historyIdx++;
+                input.value = historyBuffer[historyBuffer.length - 1 - historyIdx];
+            }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (historyIdx > 0) {
+                historyIdx--;
+                input.value = historyBuffer[historyBuffer.length - 1 - historyIdx];
+            } else if (historyIdx === 0) {
+                historyIdx = -1;
+                input.value = '';
+            }
+        } else if (e.key === 'Tab') {
+            e.preventDefault();
+            const query = input.value.trim().toLowerCase();
+            if (!query) return;
+            const matches = Object.keys(commands).filter(c => c.startsWith(query));
+            if (matches.length === 1) {
+                input.value = matches[0];
+            } else if (matches.length > 1) {
+                // Show matching choices
+                const hintLine = document.createElement('div');
+                hintLine.className = 'pl-4 text-xs text-zinc-400 font-mono';
+                hintLine.innerHTML = matches.map(m => `<span class="text-sky-400">${m}</span>`).join('   ');
+                history?.appendChild(hintLine);
+                if (body) body.scrollTop = body.scrollHeight;
+            }
+        }
+    });
+
     const runCommand = (cmd: string) => {
-        const cleanCmd = cmd.trim().toLowerCase();
+        const cleanCmd = cmd.trim();
+        const lowerCmd = cleanCmd.toLowerCase();
         if (!cleanCmd || !history) return;
 
-        if (cleanCmd === 'clear') {
+        // Push to history buffer
+        if (historyBuffer[historyBuffer.length - 1] !== cleanCmd) {
+            historyBuffer.push(cleanCmd);
+        }
+        historyIdx = -1;
+
+        if (lowerCmd === 'clear') {
             history.innerHTML = '';
             if (input) input.value = '';
             return;
         }
 
         const userLine = document.createElement('div');
-        userLine.className = 'flex items-center gap-2';
-        userLine.innerHTML = `<span class="text-emerald-400 font-bold">sysops@karem:~$</span> <span class="font-bold text-zinc-100">${cleanCmd}</span>`;
+        userLine.className = 'flex items-center gap-2 font-mono';
+        userLine.innerHTML = `<span class="text-emerald-400 font-bold shrink-0">sysops@karem:~$</span> <span class="font-bold text-zinc-100">${cleanCmd}</span>`;
         history.appendChild(userLine);
 
         const responseLine = document.createElement('div');
-        responseLine.className = 'pl-4 text-xs leading-relaxed text-zinc-300';
-        responseLine.innerHTML = commands[cleanCmd] || `<span class="text-rose-400">Command not found: '${cleanCmd}'. Type 'help' for available commands.</span>`;
+        responseLine.className = 'pl-4 text-xs leading-relaxed text-zinc-300 font-mono';
+        
+        // Handle sudo prefix
+        if (lowerCmd.startsWith('sudo')) {
+            responseLine.innerHTML = commands['sudo'];
+        } else {
+            responseLine.innerHTML = commands[lowerCmd] || `<span class="text-rose-400">Command not found: '${cleanCmd}'. Type <span class="text-sky-400 font-bold">'help'</span> for available commands.</span>`;
+        }
+
         history.appendChild(responseLine);
 
         if (input) input.value = '';
-        const body = document.getElementById('terminal-body');
         if (body) body.scrollTop = body.scrollHeight;
     };
 
